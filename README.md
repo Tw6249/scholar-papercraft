@@ -33,5 +33,12 @@ Use $scholar-papercraft to turn these experiment results and plotting code into 
 - `scripts/audit_scientific_claims.py`: flag high-risk scientific claim terms.
 - `scripts/check_latex_citations.py`: check LaTeX citation keys against local `.bib` files.
 - `scripts/audit_ai_phrases.py`: flag common AI-like academic phrasing.
+- `scripts/title_to_bib.py`: experimental helper for recovering BibTeX candidates from paper titles. Treat its output as a draft and inspect the JSON report before adding entries to a paper.
+
+Example:
+
+```bash
+python scripts/title_to_bib.py --file missing_titles.txt --out recovered.bib --report recovered_report.json
+```
 
 The core skill instructions are in [SKILL.md](SKILL.md).

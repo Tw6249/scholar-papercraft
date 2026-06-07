@@ -69,6 +69,7 @@ If any link is missing, mark it explicitly instead of filling the gap.
    - Check all figure/table/equation references.
    - Check citations are either verified or clearly marked.
    - For LaTeX projects, run `scripts/check_latex_citations.py <project>` when feasible.
+   - For missing references known only by title, `scripts/title_to_bib.py --file <titles.txt> --out <recovered.bib>` may be used as an experimental candidate-recovery helper; inspect its JSON report and manually verify every accepted entry before adding it to a paper.
    - For claim-heavy drafts, run `scripts/audit_scientific_claims.py <draft-or-project>` when feasible.
    - For LaTeX, compile or at least inspect syntax when feasible.
    - For plotting code, run the script when data and environment are available.
