@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Paper Writing"
+  short_description: "Evidence-grounded paper writing, rebuttals, and figures."
+  default_prompt: "Use $scholar-papercraft to turn my method notes, experiment results, code, and draft fragments into a polished robotics or AI paper section."
