@@ -17,6 +17,42 @@ Use this reference for drafting sections, polishing academic prose, translation 
 4. Draft section by section, keeping author-facing uncertainty notes outside paper text.
 5. Verify citations, numbers, figure references, and LaTeX syntax.
 
+## Reader-centered argument design
+
+Use this section when a draft has solid technical content but feels less publishable than strong exemplars: overfull abstract, dense technical naming, early method stack, experiment-log prose, many disconnected contribution bullets, or figures/tables that feel like notebook output.
+
+Core diagnosis:
+
+```text
+author record -> reader argument
+```
+
+The paper should not merely document everything the authors did. It should guide the reader through why the problem matters, why existing framings fail, why the proposed abstraction is necessary, and which evidence supports the central claim.
+
+Repair moves:
+
+- Establish problem tension before technical machinery: domain need -> constraint or failure mode -> specific gap -> key idea -> contribution.
+- Use old-to-new ordering: start from concepts the target reader already knows, then introduce one new distinction, object, or certificate at a time.
+- Distill one central proposition before listing contributions. Treat contribution bullets as necessary steps for resolving that proposition, not as independent feature inventory.
+- Turn technical stacks into causal chains: replace "we introduce A, B, C, and D" with "because X fails under Y, we define A, estimate B, enforce C, and evaluate D."
+- Keep abstracts as compressed arguments, not inventories. Prefer `problem -> gap -> key idea -> evidence`; omit secondary baselines, implementation details, and sanity checks unless they support the headline claim.
+- Build introductions so each paragraph makes the next one feel necessary. Avoid opening from the author's complete system vocabulary.
+- Write related work as a field map before positioning the paper. Use categories and failure modes first; use paper-by-paper contrast only where it clarifies the closest gap.
+- Organize experiments by evaluation questions. Separate main evidence, sanity checks, ablations, and illustrations; move secondary probes to appendices when they do not change the main claim.
+- Keep reproducibility artifacts out of the main narrative. Put command lines, script names, file-generation recipes, and debug probes in appendix, supplement, or repository documentation; keep the paper focused on setup, metrics, parameters, and evidence.
+- Use an early conceptual figure when the contribution depends on a new structural distinction. Tables can define terms, but they rarely replace a spatial or causal schematic.
+- Maintain a small terminology budget. Choose stable names for core objects and avoid near-synonymous compound terms that force the reader to infer whether they refer to the same thing.
+- State scope honestly, but do not repeatedly undercut each result. Use one early scope sentence and consolidate detailed limitations in Discussion or Conclusion unless a limitation changes how a result should be interpreted.
+
+When diagnosing a draft, return prioritized repair actions:
+
+1. Central proposition and problem tension.
+2. Abstract and introduction reader path.
+3. Contribution structure.
+4. Experiment questions and evidence hierarchy.
+5. Figure/table hierarchy and terminology.
+6. Reproducibility placement, limitations placement, and de-AI language cleanup.
+
 ## Abstract
 
 Use a five-move structure, adapted to the venue:

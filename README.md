@@ -7,6 +7,7 @@ It helps turn existing research materials, such as method notes, LaTeX drafts, e
 ## What it supports
 
 - Paper drafting and polishing for robotics, control, AI, and computer science.
+- Reader-centered restructuring for drafts that read like technical reports, experiment logs, or feature inventories rather than publishable arguments.
 - Venue-aware writing for styles such as Science Robotics, T-RO, RA-L, ICRA/IROS, CDC/ACC, NeurIPS, ICML, and ICLR.
 - Scientific claim auditing for words such as `stable`, `safe`, `robust`, `real-time`, `optimal`, `guarantee`, `state-of-the-art`, and `generalize`.
 - Rebuttal and reviewer-response drafting from concrete evidence.

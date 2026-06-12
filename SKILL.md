@@ -1,6 +1,6 @@
 ---
 name: scholar-papercraft
-description: Material-driven academic paper writing and editing for control science, robotics, AI, and computer science. Use when drafting or revising papers, abstracts, introductions, methods, experiments, related work, rebuttals, reviewer responses, LaTeX/Word prose, scientific language constraint auditing, de-AI/humanized academic text, figure/table captions, graphical abstracts, or plotting code from user-provided materials such as methods, notes, code, logs, tables, figures, experiments, and existing drafts, especially for Science Robotics, IEEE T-RO, IEEE RA-L, ICRA, IROS, CDC, NeurIPS, ICML, and ICLR-style technical writing. Emphasizes evidence-grounded writing and must not invent methods, results, citations, or claims.
+description: Material-driven academic paper writing and editing for control science, robotics, AI, and computer science. Use when drafting or revising papers, abstracts, introductions, methods, experiments, related work, rebuttals, reviewer responses, LaTeX/Word prose, reader-centered argument restructuring, problem-framing diagnosis, technical-report-to-paper rewriting, scientific language constraint auditing, de-AI/humanized academic text, figure/table captions, graphical abstracts, or plotting code from user-provided materials such as methods, notes, code, logs, tables, figures, experiments, and existing drafts, especially for Science Robotics, IEEE T-RO, IEEE RA-L, ICRA, IROS, CDC, NeurIPS, ICML, and ICLR-style technical writing. Emphasizes evidence-grounded writing and must not invent methods, results, citations, or claims.
 ---
 
 # Write Polish Research Papers
@@ -34,6 +34,7 @@ If any link is missing, mark it explicitly instead of filling the gap.
 1. Identify the target task:
    - Full paper or section drafting
    - Polishing, translation polishing, or de-AI editing
+   - Reader-path diagnosis, problem-framing repair, or technical-report-to-paper restructuring
    - Related work or citation repair
    - Rebuttal or response letter
    - Figure/table captions, graphical abstract, or plotting code improvement
@@ -41,7 +42,7 @@ If any link is missing, mark it explicitly instead of filling the gap.
 2. Inventory the materials:
    - Read the user's supplied files and nearby project context.
    - If the user gives a project folder, run `scripts/inventory_materials.py <project>`.
-   - Build a short material map: method facts, claimed contributions, experimental evidence, figures, code paths, missing facts.
+   - Build a short material map: method facts, claimed contributions, central proposition, experimental evidence, figures, terminology, code paths, missing facts.
 
 3. Build a claim-evidence ledger:
    - Use `references/material-audit.md` for the ledger template.
@@ -49,7 +50,7 @@ If any link is missing, mark it explicitly instead of filling the gap.
    - Ask at most 1-3 targeted questions only when the paper's core contribution, target venue, or evidence is ambiguous enough to change the writing.
 
 4. Choose the workflow reference:
-   - For paper sections and polishing, read `references/writing-workflows.md`.
+   - For paper sections, reader-path diagnosis, argument restructuring, and polishing, read `references/writing-workflows.md`.
    - For scientific language constraints, claim calibration, and forbidden overclaiming words, read `references/scientific-language-constraints.md`.
    - For Science Robotics, T-RO, RA-L, ICRA, control, or AI venue tone, read `references/venue-packs.md`; use `references/venue-style.md` only for broader prose style.
    - For experiment reporting and reproducibility, read `references/reproducibility-reporting.md`.
@@ -60,7 +61,9 @@ If any link is missing, mark it explicitly instead of filling the gap.
 
 5. Draft or revise:
    - Start from the strongest evidence, not from generic field background.
+   - Build problem tension before introducing dense technical machinery.
    - Make the main contribution visible early.
+   - Convert "we did A, B, C" lists into "to resolve X, the method needs A, B, C" when the draft feels like an inventory.
    - Tie each experiment to a claim.
    - Prefer a concrete draft with flagged uncertainties over a long list of questions.
 
