@@ -9,6 +9,7 @@ It helps turn existing research materials, such as method notes, LaTeX drafts, e
 - Paper drafting and polishing for robotics, control, AI, and computer science.
 - Reader-centered restructuring for drafts that read like technical reports, experiment logs, or feature inventories rather than publishable arguments.
 - Venue-aware writing for styles such as Science Robotics, T-RO, RA-L, ICRA/IROS, CDC/ACC, NeurIPS, ICML, and ICLR.
+- Style distillation from exemplar papers, paragraphs, abstracts, rebuttals, or reviews for author-voice matching and sample-guided de-AI editing.
 - Scientific claim auditing for words such as `stable`, `safe`, `robust`, `real-time`, `optimal`, `guarantee`, `state-of-the-art`, and `generalize`.
 - Rebuttal and reviewer-response drafting from concrete evidence.
 - Figure, table, caption, and plotting-code improvement.
@@ -26,6 +27,10 @@ Use $scholar-papercraft to audit this T-RO draft for unsupported stability, safe
 
 ```text
 Use $scholar-papercraft to turn these experiment results and plotting code into a publication-quality figure and caption.
+```
+
+```text
+Use $scholar-papercraft to rewrite this introduction in the style of these exemplar paragraphs while preserving our technical claims.
 ```
 
 ## Included checks

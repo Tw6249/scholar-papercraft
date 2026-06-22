@@ -1,6 +1,6 @@
 ---
 name: scholar-papercraft
-description: Material-driven academic paper writing and editing for control science, robotics, AI, and computer science. Use when drafting or revising papers, abstracts, introductions, methods, experiments, related work, rebuttals, reviewer responses, LaTeX/Word prose, reader-centered argument restructuring, problem-framing diagnosis, technical-report-to-paper rewriting, scientific language constraint auditing, de-AI/humanized academic text, figure/table captions, graphical abstracts, or plotting code from user-provided materials such as methods, notes, code, logs, tables, figures, experiments, and existing drafts, especially for Science Robotics, IEEE T-RO, IEEE RA-L, ICRA, IROS, CDC, NeurIPS, ICML, and ICLR-style technical writing. Emphasizes evidence-grounded writing and must not invent methods, results, citations, or claims.
+description: Material-driven academic paper writing and editing for control science, robotics, AI, and computer science. Use when drafting or revising papers, abstracts, introductions, methods, experiments, related work, rebuttals, reviewer responses, LaTeX/Word prose, reader-centered argument restructuring, problem-framing diagnosis, technical-report-to-paper rewriting, scientific language constraint auditing, style distillation from exemplar papers or paragraphs, author-voice matching, sample-guided de-AI/humanized academic text, figure/table captions, graphical abstracts, or plotting code from user-provided materials such as methods, notes, code, logs, tables, figures, experiments, existing drafts, and writing samples, especially for Science Robotics, IEEE T-RO, IEEE RA-L, ICRA, IROS, CDC, NeurIPS, ICML, and ICLR-style technical writing. Emphasizes evidence-grounded writing and must not invent methods, results, citations, or claims.
 ---
 
 # Write Polish Research Papers
@@ -17,6 +17,12 @@ claim -> evidence -> wording -> venue fit -> verification
 
 If any link is missing, mark it explicitly instead of filling the gap.
 
+When writing samples are provided, treat style as a wording and argumentation layer, not as a factual source:
+
+```text
+technical correctness -> evidence -> claim strength -> venue fit -> author/sample style -> fluency
+```
+
 ## Non-negotiable rules
 
 - Ground every technical claim in provided materials: draft text, notes, equations, code, logs, tables, plots, videos, or author feedback.
@@ -27,6 +33,8 @@ If any link is missing, mark it explicitly instead of filling the gap.
 - Keep technical meaning stable when polishing or de-AI editing. Do not make academic writing casual.
 - Prefer precise verbs and concrete nouns over generic significance language.
 - Apply scientific language constraints before final wording: claim strength, causal verbs, guarantees, novelty, robustness, safety, stability, and significance must match the evidence.
+- Use example papers, paragraphs, abstracts, rebuttals, or reviews only to infer style unless the user explicitly marks them as factual project materials.
+- Do not import claims, results, citations, limitations, assumptions, or terminology definitions from style examples unless the source materials support them.
 - Use the target venue's current author instructions when formatting, page limits, AI disclosure, anonymity, or submission rules matter. These rules change.
 
 ## Quick workflow
@@ -34,6 +42,7 @@ If any link is missing, mark it explicitly instead of filling the gap.
 1. Identify the target task:
    - Full paper or section drafting
    - Polishing, translation polishing, or de-AI editing
+   - Style distillation, author-voice matching, or sample-guided rewriting
    - Reader-path diagnosis, problem-framing repair, or technical-report-to-paper restructuring
    - Related work or citation repair
    - Rebuttal or response letter
@@ -42,11 +51,13 @@ If any link is missing, mark it explicitly instead of filling the gap.
 2. Inventory the materials:
    - Read the user's supplied files and nearby project context.
    - If the user gives a project folder, run `scripts/inventory_materials.py <project>`.
-   - Build a short material map: method facts, claimed contributions, central proposition, experimental evidence, figures, terminology, code paths, missing facts.
+   - Separate factual materials from style examples.
+   - Build a short material map: method facts, claimed contributions, central proposition, experimental evidence, figures, terminology, code paths, style examples, missing facts.
 
 3. Build a claim-evidence ledger:
    - Use `references/material-audit.md` for the ledger template.
    - Separate confirmed claims, plausible but unverified claims, and missing author decisions.
+   - Exclude style-only examples from the claim-evidence ledger except as evidence of wording, rhythm, or argument style.
    - Ask at most 1-3 targeted questions only when the paper's core contribution, target venue, or evidence is ambiguous enough to change the writing.
 
 4. Choose the workflow reference:
@@ -61,14 +72,17 @@ If any link is missing, mark it explicitly instead of filling the gap.
 
 5. Draft or revise:
    - Start from the strongest evidence, not from generic field background.
+   - If writing samples are supplied, silently distill a compact writing profile before drafting or polishing.
    - Build problem tension before introducing dense technical machinery.
    - Make the main contribution visible early.
    - Convert "we did A, B, C" lists into "to resolve X, the method needs A, B, C" when the draft feels like an inventory.
    - Tie each experiment to a claim.
+   - Use the writing profile to guide terminology, sentence rhythm, paragraph logic, claim qualification, contribution framing, reviewer-facing emphasis, and avoid-list.
    - Prefer a concrete draft with flagged uncertainties over a long list of questions.
 
 6. Verify before delivery:
    - Check numerical consistency against the source materials.
+   - Check that style examples did not leak unsupported facts, citations, claims, or terminology definitions into the draft.
    - Check all figure/table/equation references.
    - Check citations are either verified or clearly marked.
    - For LaTeX projects, run `scripts/check_latex_citations.py <project>` when feasible.
@@ -91,8 +105,41 @@ When the user asks for a paper-level task, look for:
 - Existing `.tex`, `.bib`, Word, Markdown, or notes
 - Related work seed papers and papers the authors must cite
 - Reviewer comments, if revising or rebutting
+- Writing samples, exemplar papers, polished abstracts/introductions, rebuttals, or reviews when author voice or venue-like style should be imitated
 
 If the package is thin, produce an evidence-first outline and a missing-material checklist before drafting high-confidence prose.
+
+## Style distillation
+
+Use this workflow when the user provides example papers, paragraphs, abstracts, introductions, related work sections, rebuttals, reviews, or polished text and asks to imitate the writing style, preserve author voice, reduce AI-like language, sound more like a target field, or align wording with top-tier journal or conference conventions.
+
+Defaults:
+
+- Reader: peer reviewers.
+- Output type: journal or conference scientific writing.
+- Tone: precise, restrained, evidence-oriented, and field-appropriate.
+- Priority: clarity, methodological rigor, terminology accuracy, and reviewer-facing argumentation.
+
+Distill examples silently unless the user asks to see the analysis:
+
+1. Read the examples for domain vocabulary, sentence rhythm, paragraph structure, technical detail, preferred verbs and transitions, claim qualification, contribution framing, gap/limitation statements, and evidence-to-conclusion logic.
+2. Build a compact internal writing profile: terminology, phrasing patterns, argument structure, reviewer-facing emphasis, and things to avoid.
+3. Write or revise the target text using the profile while preserving the source materials' technical claims.
+4. Self-check once before delivery: scientific register, field-appropriate terminology, sample-consistent style, non-generic transitions, clear reviewer-facing contribution, and cautious evidence-matched claims.
+
+If the user asks to see the distilled profile, use:
+
+```text
+Compact Writing Profile
+- Terminology:
+- Sentence style:
+- Paragraph logic:
+- Claim style:
+- Reviewer-facing focus:
+- Avoid:
+```
+
+Keep visible profiles concise and operational.
 
 ## Output contracts
 
@@ -107,6 +154,7 @@ For polishing:
 - Return the revised text first.
 - Then list only high-impact edits: claim sharpening, structure changes, terminology fixes, tone changes, citation/result warnings.
 - Preserve the user's technical intent even if the original wording is rough.
+- If style examples are supplied, apply the compact writing profile without exposing it unless requested.
 
 For scientific language auditing:
 
@@ -118,7 +166,7 @@ For de-AI editing:
 
 - Remove formulaic AI patterns, inflated significance claims, vague overimportance language, repetitive transitions, and generic conclusions.
 - Keep the register appropriate for T-RO, RA-L, ICRA, Science Robotics, or the user's chosen venue.
-- Preserve author voice if the user provides a writing sample.
+- Preserve author voice if the user provides a writing sample, but do not over-humanize into casual prose.
 
 For rebuttal:
 
@@ -147,3 +195,4 @@ For plotting code:
 - "Turn these experiment logs and plot scripts into a publication-quality ablation figure and caption."
 - "Write a rebuttal from these reviewer comments and our extra experiment results."
 - "De-AI this Science Robotics significance paragraph while preserving the mechanism and evidence."
+- "Rewrite this introduction to match the style of these exemplar paragraphs while preserving our technical claims."
