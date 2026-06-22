@@ -33,6 +33,56 @@ Avoid pie charts for technical results unless composition is truly the claim.
 - State whether error bars are std, stderr, confidence intervals, or min/max.
 - Keep scripts reproducible: no absolute paths unless necessary; expose input/output paths as arguments.
 
+## LaTeX figure and float-layout repair
+
+Use this workflow when a paper has figures or tables drifting into the bibliography,
+figure-only pages, mostly blank tail pages, or a layout that looks nonstandard after
+plot regeneration.
+
+Failure modes to check:
+
+- Over-tall `figure*` panels in a two-column paper can block later floats and force a
+  figure-only page.
+- A short `table*` can be more disruptive than a single-column `table`; convert it
+  when the data still reads well at `\columnwidth`.
+- Manual `\clearpage`, `\newpage`, `\IEEEtriggeratref`, or broad float barriers can
+  hide the underlying problem by creating blank reference or float pages.
+- Long captions and legends consume the same page budget as the plot; shorten them
+  before shrinking scientific content.
+- Plot aesthetics and LaTeX layout interact. Fixing only `main.tex` is often
+  insufficient if the exported figure geometry is too tall.
+
+Repair sequence:
+
+1. Inspect `main.tex` near the affected floats and bibliography.
+2. Record which figures/tables are single-column or double-column and whether they
+   use `[t]`, `[b]`, `[h]`, or `!` modifiers.
+3. Regenerate figures from existing data before changing results, metrics, or claims.
+4. Prefer compact, venue-sized figure geometry over post-hoc LaTeX scaling.
+5. Tune float spacing and float fractions conservatively only after the figure sizes
+   are reasonable.
+6. Compile the paper, render the affected pages, and visually inspect page order,
+   float placement, captions, references, and empty space.
+7. Reject fixes that merely move the problem, such as a clean figure page followed by
+   a mostly blank bibliography page.
+
+Useful IEEE-style size targets:
+
+```python
+FIG_SINGLE = (3.35, 2.25)
+FIG_DOUBLE = (7.1, 3.3)
+FIG_DOUBLE_SHORT = (7.1, 2.4)
+```
+
+Verification checklist:
+
+- No figure appears inside or after the references unless it is intentionally placed
+  there by the manuscript structure.
+- No figure occupies an otherwise blank page when nearby text or tables could fit.
+- References do not spill onto a mostly blank tail page due only to manual triggers.
+- Legends and axis labels remain readable at final column width.
+- `pdffonts` or an equivalent check shows no Type 3 fonts in the compiled PDF.
+
 ## Matplotlib defaults
 
 Use a compact style suitable for IEEE two-column papers:
