@@ -1,6 +1,6 @@
 ---
 name: scholar-papercraft
-description: Material-driven academic paper writing and editing for control science, robotics, AI, and computer science. Use when drafting or revising papers, abstracts, introductions, methods, experiments, related work, rebuttals, reviewer responses, LaTeX/Word prose, reader-centered argument restructuring, problem-framing diagnosis, technical-report-to-paper rewriting, scientific language constraint auditing, style distillation from exemplar papers or paragraphs, author-voice matching, sample-guided de-AI/humanized academic text, figure/table captions, graphical abstracts, or plotting code from user-provided materials such as methods, notes, code, logs, tables, figures, experiments, existing drafts, and writing samples, especially for Science Robotics, IEEE T-RO, IEEE RA-L, ICRA, IROS, CDC, NeurIPS, ICML, and ICLR-style technical writing. Emphasizes evidence-grounded writing and must not invent methods, results, citations, or claims.
+description: Material-driven academic paper writing and editing for control science, robotics, AI, and computer science. Use when drafting or revising papers, abstracts, introductions, methods, experiments, related work, rebuttals, reviewer responses, LaTeX/Word prose, reader-centered argument restructuring, problem-framing diagnosis, technical-report-to-paper rewriting, scientific language constraint auditing, style distillation from exemplar papers or paragraphs, author-voice matching, sample-guided de-AI/humanized academic text, figure/table captions, graphical abstracts, plotting code, or LaTeX figure/table layout and float-placement repair from user-provided materials such as methods, notes, code, logs, tables, figures, experiments, existing drafts, and writing samples, especially for Science Robotics, IEEE T-RO, IEEE RA-L, ICRA, IROS, CDC, NeurIPS, ICML, and ICLR-style technical writing. Emphasizes evidence-grounded writing and must not invent methods, results, citations, or claims.
 ---
 
 # Write Polish Research Papers
@@ -46,7 +46,7 @@ technical correctness -> evidence -> claim strength -> venue fit -> author/sampl
    - Reader-path diagnosis, problem-framing repair, or technical-report-to-paper restructuring
    - Related work or citation repair
    - Rebuttal or response letter
-   - Figure/table captions, graphical abstract, or plotting code improvement
+   - Figure/table captions, graphical abstract, plotting code improvement, or LaTeX figure/table layout repair
 
 2. Inventory the materials:
    - Read the user's supplied files and nearby project context.
@@ -66,7 +66,7 @@ technical correctness -> evidence -> claim strength -> venue fit -> author/sampl
    - For Science Robotics, T-RO, RA-L, ICRA, control, or AI venue tone, read `references/venue-packs.md`; use `references/venue-style.md` only for broader prose style.
    - For experiment reporting and reproducibility, read `references/reproducibility-reporting.md`.
    - For AI-writing disclosure, review privacy, and ethics/limitations, read `references/ai-disclosure-ethics.md`.
-   - For figures, captions, tables, and plotting code, read `references/plotting-and-figures.md`.
+   - For figures, captions, tables, plotting code, or LaTeX float/page layout issues, read `references/plotting-and-figures.md`.
    - For rebuttals and reviewer responses, read `references/review-rebuttal.md`.
    - For provenance and external inspirations behind this skill, read `references/source-notes.md`.
 
@@ -91,6 +91,7 @@ technical correctness -> evidence -> claim strength -> venue fit -> author/sampl
    - For claim-heavy drafts, run `scripts/audit_scientific_claims.py <draft-or-project>` when feasible.
    - For LaTeX, compile or at least inspect syntax when feasible.
    - For plotting code, run the script when data and environment are available.
+   - For figure/table layout repair, compile, render the affected pages, and verify that floats do not intrude into references, create figure-only blank pages, or leave avoidable mostly blank tail pages.
 
 ## Material package checklist
 
@@ -180,6 +181,7 @@ For plotting code:
 - Preserve data provenance and metric definitions.
 - Improve readability, accessibility, vector export, LaTeX integration, and reproducibility.
 - Save or patch scripts rather than only describing changes when code is available.
+- When the issue is paper layout rather than plot aesthetics alone, adjust figure geometry, captions, table width, and LaTeX float placement together, then verify the compiled PDF visually.
 
 ## Style defaults
 
