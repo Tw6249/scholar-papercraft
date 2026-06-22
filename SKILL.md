@@ -75,6 +75,7 @@ technical correctness -> evidence -> claim strength -> venue fit -> author/sampl
    - If writing samples are supplied, silently distill a compact writing profile before drafting or polishing.
    - Build problem tension before introducing dense technical machinery.
    - Make the main contribution visible early.
+   - Before finalizing abstracts, opening summaries, contribution bullets, and conclusions, run a reader-positioning pass: foreground the paper's own problem, abstraction, method role, and evidence; move raw notation, implementation provenance, citation lineage, reproducibility mechanics, and secondary sanity checks to the lowest section that needs them unless they are central to the headline claim.
    - Convert "we did A, B, C" lists into "to resolve X, the method needs A, B, C" when the draft feels like an inventory.
    - Tie each experiment to a claim.
    - Use the writing profile to guide terminology, sentence rhythm, paragraph logic, claim qualification, contribution framing, reviewer-facing emphasis, and avoid-list.

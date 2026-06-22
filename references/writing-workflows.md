@@ -36,6 +36,8 @@ Repair moves:
 - Distill one central proposition before listing contributions. Treat contribution bullets as necessary steps for resolving that proposition, not as independent feature inventory.
 - Turn technical stacks into causal chains: replace "we introduce A, B, C, and D" with "because X fails under Y, we define A, estimate B, enforce C, and evaluate D."
 - Keep abstracts as compressed arguments, not inventories. Prefer `problem -> gap -> key idea -> evidence`; omit secondary baselines, implementation details, and sanity checks unless they support the headline claim.
+- Separate paper identity from method provenance. Early sections should make the reader understand what this paper contributes before explaining which prior architecture, estimator, solver, or implementation pattern it adapts.
+- Use section-appropriate detail: abstracts state the abstraction and capability; introductions motivate and position it; methods give notation and provenance; experiments give reproducibility-relevant setup.
 - Build introductions so each paragraph makes the next one feel necessary. Avoid opening from the author's complete system vocabulary.
 - Write related work as a field map before positioning the paper. Use categories and failure modes first; use paper-by-paper contrast only where it clarifies the closest gap.
 - Organize experiments by evaluation questions. Separate main evidence, sanity checks, ablations, and illustrations; move secondary probes to appendices when they do not change the main claim.
@@ -67,6 +69,10 @@ Rules:
 
 - Do not open with generic field hype.
 - Include numbers only when verified.
+- Keep the abstract at the right abstraction level. Prefer conceptual method names over raw equations unless the formula itself is the central contribution.
+- Name methods by their functional role in the paper, not by implementation provenance. Use phrases such as "distributed auxiliary-variable CBF-QP" before "X-style method"; put author lineage in related work or method sections.
+- Avoid defensive meta-claims in the abstract. Use "simulation studies evaluate..." rather than "reproducible simulations..." unless reproducibility is itself a contribution.
+- End with the main capability or evidence-supported conclusion, not a list of all checks, baselines, or implementation components.
 - Avoid "novel", "effective", "robust", and "significant" unless the sentence states evidence.
 - For Science Robotics, make the capability and physical system legible.
 - For T-RO/RA-L/ICRA, make the technical contribution and evidence explicit.
