@@ -1,0 +1,21 @@
+name: rebuttal
+purpose: Build reviewer responses and revision plans from reviewer comments and concrete evidence.
+allowed_actions:
+  - parse_reviewer_comments_into_issues
+  - map_each_issue_to_evidence
+  - draft_respectful_response
+  - propose_manuscript_revision
+  - identify_missing_experiments_or_citations
+forbidden_actions:
+  - concede_unsupported_flaws
+  - promise_unavailable_results
+  - invent_new_experiments
+  - attack_reviewers
+outputs:
+  - atomic_issue_table
+  - response_letter_text
+  - manuscript_revision_plan
+  - evidence_or_author_input_needed
+required_references:
+  - references/review-rebuttal.md
+  - references/traceability.md

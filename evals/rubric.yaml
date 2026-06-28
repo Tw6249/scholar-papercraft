@@ -1,0 +1,35 @@
+metrics:
+  factual_preservation:
+    - number_mutation_rate
+    - unit_mutation_rate
+    - citation_key_hallucination_rate
+    - equation_label_mutation_rate
+    - unsupported_claim_introduction_rate
+  argument_integrity:
+    - abstract_to_evidence_coverage
+    - contribution_to_evidence_coverage
+    - orphan_experiment_count
+    - conclusion_escalation_count
+  style:
+    - formulaic_transition_density
+    - repeated_sentence_template_density
+    - empty_conclusion_rate
+    - vague_evaluative_phrase_rate
+    - filler_ratio
+    - weak_verb_density
+    - nominalization_density
+    - claim_bearing_sentence_ratio
+    - technical_action_balance
+    - before_after_word_count_growth
+  author_experience:
+    - accepted_edit_ratio
+    - manual_revert_ratio
+    - time_to_submission_ready_draft
+    - author_correction_count
+metamorphic_tests:
+  - remove_experiment_result_should_downgrade_claim
+  - replace_style_exemplar_should_not_change_facts
+  - swap_two_numbers_should_trigger_consistency_warning
+  - add_fake_citation_key_should_fail_citation_audit
+  - replace_hardware_demo_with_simulation_should_remove_real_world_validation
+  - delete_theorem_assumption_should_trigger_scope_warning

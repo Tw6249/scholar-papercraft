@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scholar Papercraft Project",
+  "type": "object",
+  "required": ["paper", "central_proposition", "scope", "editing_mode"],
+  "properties": {
+    "paper": {
+      "type": "object",
+      "required": ["title_working", "venue", "domain"],
+      "properties": {
+        "title_working": {"type": "string"},
+        "venue": {"type": "string"},
+        "domain": {"type": "string"},
+        "audience": {
+          "type": "object",
+          "properties": {
+            "primary": {"type": "string"},
+            "secondary": {"type": "string"}
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "central_proposition": {
+      "type": "object",
+      "required": ["text", "status"],
+      "properties": {
+        "text": {"type": "string"},
+        "status": {
+          "type": "string",
+          "enum": ["missing", "draft", "author_confirmed", "evidence_confirmed"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "included": {"type": "array", "items": {"type": "string"}},
+        "excluded": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "editing_mode": {
+      "type": "string",
+      "enum": ["diagnose-only", "conservative-edit", "trim-and-sharpen", "structural-revision", "editorial-rebuild", "submission-audit"]
+    }
+  },
+  "additionalProperties": true
+}

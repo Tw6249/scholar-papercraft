@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scholar Papercraft Insight Cards",
+  "type": "object",
+  "required": ["insights"],
+  "properties": {
+    "insights": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "observation", "mechanism_status", "approved_for_paper"],
+        "properties": {
+          "id": {"type": "string"},
+          "observation": {"type": "string"},
+          "mechanism": {"type": "string"},
+          "mechanism_status": {
+            "type": "string",
+            "enum": ["CONFIRMED_MECHANISM", "PLAUSIBLE_HYPOTHESIS", "AUTHOR_INSIGHT_NEEDED"]
+          },
+          "supporting_evidence": {"type": "array", "items": {"type": "string"}},
+          "alternative_explanation": {"type": "array", "items": {"type": "string"}},
+          "scope": {"type": "array", "items": {"type": "string"}},
+          "approved_for_paper": {"type": "boolean"},
+          "author_question": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

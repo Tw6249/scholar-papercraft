@@ -1,0 +1,60 @@
+name: trim-and-sharpen
+purpose: Remove AI-like padding and sharpen academic prose while preserving claims, evidence, numbers, notation, and author judgment.
+language_modes:
+  cold-dense:
+    best_for:
+      - control
+      - robotics
+      - Automatica
+      - IEEE T-RO
+      - IEEE RA-L
+      - ICRA/IROS
+    priorities:
+      - shorten_before_beautifying
+      - precise_verbs
+      - low_decorative_transition_load
+      - scoped_claims
+  narrative-persuasive:
+    best_for:
+      - Science Robotics
+      - Nature-family venues
+      - broader-audience introductions
+      - NeurIPS/ICLR introductions
+    priorities:
+      - reader_path
+      - problem_tension
+      - paragraph_momentum
+      - evidence_preservation
+passes:
+  - compression_pass
+  - claim_strength_pass
+  - verb_pass
+  - stress_pass
+  - rhythm_pass
+  - author_judgment_pass
+allowed_actions:
+  - delete_filler
+  - shorten_sentences
+  - replace_weak_verbs
+  - replace_vague_evaluators_with_evidence
+  - improve_sentence_stress
+  - preserve_author_judgment
+forbidden_actions:
+  - add_claims
+  - add_mechanisms
+  - change_numbers
+  - change_citations
+  - change_equations_or_labels
+  - change_theorem_scope
+  - copy_exemplar_phrases
+required_references:
+  - references/language-polishing.md
+  - references/scientific-language-constraints.md
+recommended_checks:
+  - audit_language_density
+  - compare_revision_style_when_before_after_available
+outputs:
+  - revised_text_first
+  - compression_note
+  - claim_scope_warnings
+  - language_density_summary

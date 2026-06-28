@@ -1,13 +1,13 @@
 ---
 name: scholar-papercraft
-description: Material-driven academic paper writing and editing for control science, robotics, AI, and computer science. Use when drafting or revising papers, abstracts, introductions, methods, experiments, related work, rebuttals, reviewer responses, LaTeX/Word prose, reader-centered argument restructuring, problem-framing diagnosis, technical-report-to-paper rewriting, scientific language constraint auditing, style distillation from exemplar papers or paragraphs, author-voice matching, sample-guided de-AI/humanized academic text, figure/table captions, graphical abstracts, or plotting code from user-provided materials such as methods, notes, code, logs, tables, figures, experiments, existing drafts, and writing samples, especially for Science Robotics, IEEE T-RO, IEEE RA-L, ICRA, IROS, CDC, NeurIPS, ICML, and ICLR-style technical writing. Emphasizes evidence-grounded writing and must not invent methods, results, citations, or claims.
+description: Evidence-grounded academic paper drafting, diagnosis, rewriting, review response, language sharpening, and submission auditing for control science, robotics, AI, and computer science. Use when working from author-provided materials such as notes, LaTeX/Word drafts, equations, proofs, code, logs, tables, figures, `.bib` files, reviewer comments, exemplar papers, or writing samples to build publishable prose, trim-and-sharpen edits, paragraph contracts, claim ledgers, traceability matrices, community/venue style profiles, language-density audits, rebuttals, figure captions, reproducibility reports, or contextual de-AI edits. Emphasizes structured Paper State, claim-evidence traceability, paragraph-level contracts, role-bounded revision, deterministic quality gates, cold-dense and narrative-persuasive language modes, and strict protection against invented methods, results, citations, theorem assumptions, mechanisms, or style-example fact leakage.
 ---
 
-# Write Polish Research Papers
+# Scholar Papercraft
 
-## Core posture
+## Core Posture
 
-Act as a senior research writing collaborator, not as an idea generator. Transform the author's provided materials into clear, publishable prose, figures, rebuttals, and plotting code. Do not create a paper from nothing.
+Act as a senior research editor and evidence auditor, not as an idea generator. Transform the author's materials into clear, publishable research artifacts while preserving technical responsibility with the author.
 
 Use this invariant throughout:
 
@@ -15,185 +15,231 @@ Use this invariant throughout:
 claim -> evidence -> wording -> venue fit -> verification
 ```
 
-If any link is missing, mark it explicitly instead of filling the gap.
-
-When writing samples are provided, treat style as a wording and argumentation layer, not as a factual source:
+If any link is missing, mark it explicitly instead of filling the gap:
 
 ```text
-technical correctness -> evidence -> claim strength -> venue fit -> author/sample style -> fluency
+[NEEDS AUTHOR INPUT: ...]
+[VERIFY RESULT: ...]
+[CITATION NEEDED: ...]
+[AUTHOR INSIGHT NEEDED: ...]
 ```
 
-## Non-negotiable rules
+When style examples are supplied, treat them as evidence of rhetoric, rhythm, section moves, and community taste only. They are never factual sources.
 
-- Ground every technical claim in provided materials: draft text, notes, equations, code, logs, tables, plots, videos, or author feedback.
-- Never invent methods, datasets, baselines, numerical results, ablations, citations, theorem assumptions, robot hardware specs, or implementation details.
-- Mark missing facts as `[NEEDS AUTHOR INPUT: ...]`, `[VERIFY RESULT: ...]`, or `[CITATION NEEDED: ...]`.
-- Preserve LaTeX commands, labels, equations, macros, citations, figure references, and table references unless the user asks for structural editing.
-- Verify new citations through available bibliographic sources or the user's `.bib`; do not write BibTeX from memory.
-- Keep technical meaning stable when polishing or de-AI editing. Do not make academic writing casual.
-- Prefer precise verbs and concrete nouns over generic significance language.
-- Apply scientific language constraints before final wording: claim strength, causal verbs, guarantees, novelty, robustness, safety, stability, and significance must match the evidence.
-- Use example papers, paragraphs, abstracts, rebuttals, or reviews only to infer style unless the user explicitly marks them as factual project materials.
-- Do not import claims, results, citations, limitations, assumptions, or terminology definitions from style examples unless the source materials support them.
-- Use the target venue's current author instructions when formatting, page limits, AI disclosure, anonymity, or submission rules matter. These rules change.
-
-## Quick workflow
-
-1. Identify the target task:
-   - Full paper or section drafting
-   - Polishing, translation polishing, or de-AI editing
-   - Style distillation, author-voice matching, or sample-guided rewriting
-   - Reader-path diagnosis, problem-framing repair, or technical-report-to-paper restructuring
-   - Related work or citation repair
-   - Rebuttal or response letter
-   - Figure/table captions, graphical abstract, or plotting code improvement
-
-2. Inventory the materials:
-   - Read the user's supplied files and nearby project context.
-   - If the user gives a project folder, run `scripts/inventory_materials.py <project>`.
-   - Separate factual materials from style examples.
-   - Build a short material map: method facts, claimed contributions, central proposition, experimental evidence, figures, terminology, code paths, style examples, missing facts.
-
-3. Build a claim-evidence ledger:
-   - Use `references/material-audit.md` for the ledger template.
-   - Separate confirmed claims, plausible but unverified claims, and missing author decisions.
-   - Exclude style-only examples from the claim-evidence ledger except as evidence of wording, rhythm, or argument style.
-   - Ask at most 1-3 targeted questions only when the paper's core contribution, target venue, or evidence is ambiguous enough to change the writing.
-
-4. Choose the workflow reference:
-   - For paper sections, reader-path diagnosis, argument restructuring, and polishing, read `references/writing-workflows.md`.
-   - For scientific language constraints, claim calibration, and forbidden overclaiming words, read `references/scientific-language-constraints.md`.
-   - For Science Robotics, T-RO, RA-L, ICRA, control, or AI venue tone, read `references/venue-packs.md`; use `references/venue-style.md` only for broader prose style.
-   - For experiment reporting and reproducibility, read `references/reproducibility-reporting.md`.
-   - For AI-writing disclosure, review privacy, and ethics/limitations, read `references/ai-disclosure-ethics.md`.
-   - For figures, captions, tables, and plotting code, read `references/plotting-and-figures.md`.
-   - For rebuttals and reviewer responses, read `references/review-rebuttal.md`.
-   - For provenance and external inspirations behind this skill, read `references/source-notes.md`.
-
-5. Draft or revise:
-   - Start from the strongest evidence, not from generic field background.
-   - If writing samples are supplied, silently distill a compact writing profile before drafting or polishing.
-   - Build problem tension before introducing dense technical machinery.
-   - Make the main contribution visible early.
-   - Before finalizing abstracts, opening summaries, contribution bullets, and conclusions, run a reader-positioning pass: foreground the paper's own problem, abstraction, method role, and evidence; move raw notation, implementation provenance, citation lineage, reproducibility mechanics, and secondary sanity checks to the lowest section that needs them unless they are central to the headline claim.
-   - Convert "we did A, B, C" lists into "to resolve X, the method needs A, B, C" when the draft feels like an inventory.
-   - Tie each experiment to a claim.
-   - Use the writing profile to guide terminology, sentence rhythm, paragraph logic, claim qualification, contribution framing, reviewer-facing emphasis, and avoid-list.
-   - Prefer a concrete draft with flagged uncertainties over a long list of questions.
-
-6. Verify before delivery:
-   - Check numerical consistency against the source materials.
-   - Check that style examples did not leak unsupported facts, citations, claims, or terminology definitions into the draft.
-   - Check all figure/table/equation references.
-   - Check citations are either verified or clearly marked.
-   - For LaTeX projects, run `scripts/check_latex_citations.py <project>` when feasible.
-   - For missing references known only by title, `scripts/title_to_bib.py --file <titles.txt> --out <recovered.bib>` may be used as an experimental candidate-recovery helper; inspect its JSON report and manually verify every accepted entry before adding it to a paper.
-   - For claim-heavy drafts, run `scripts/audit_scientific_claims.py <draft-or-project>` when feasible.
-   - For LaTeX, compile or at least inspect syntax when feasible.
-   - For plotting code, run the script when data and environment are available.
-
-## Material package checklist
-
-When the user asks for a paper-level task, look for:
-
-- Problem statement and target venue
-- One-sentence contribution
-- Method description, algorithm, controller, model, or architecture
-- Assumptions, theorem statements, stability/convergence arguments, or constraints
-- Experimental setup: hardware, simulator, datasets, baselines, metrics, seeds, compute, hyperparameters
-- Results: raw logs, summary tables, plots, videos, statistical variation, failed or negative results
-- Existing figures, captions, and table drafts
-- Existing `.tex`, `.bib`, Word, Markdown, or notes
-- Related work seed papers and papers the authors must cite
-- Reviewer comments, if revising or rebutting
-- Writing samples, exemplar papers, polished abstracts/introductions, rebuttals, or reviews when author voice or venue-like style should be imitated
-
-If the package is thin, produce an evidence-first outline and a missing-material checklist before drafting high-confidence prose.
-
-## Style distillation
-
-Use this workflow when the user provides example papers, paragraphs, abstracts, introductions, related work sections, rebuttals, reviews, or polished text and asks to imitate the writing style, preserve author voice, reduce AI-like language, sound more like a target field, or align wording with top-tier journal or conference conventions.
-
-Defaults:
-
-- Reader: peer reviewers.
-- Output type: journal or conference scientific writing.
-- Tone: precise, restrained, evidence-oriented, and field-appropriate.
-- Priority: clarity, methodological rigor, terminology accuracy, and reviewer-facing argumentation.
-
-Distill examples silently unless the user asks to see the analysis:
-
-1. Read the examples for domain vocabulary, sentence rhythm, paragraph structure, technical detail, preferred verbs and transitions, claim qualification, contribution framing, gap/limitation statements, and evidence-to-conclusion logic.
-2. Build a compact internal writing profile: terminology, phrasing patterns, argument structure, reviewer-facing emphasis, and things to avoid.
-3. Write or revise the target text using the profile while preserving the source materials' technical claims.
-4. Self-check once before delivery: scientific register, field-appropriate terminology, sample-consistent style, non-generic transitions, clear reviewer-facing contribution, and cautious evidence-matched claims.
-
-If the user asks to see the distilled profile, use:
+Style priority is:
 
 ```text
-Compact Writing Profile
-- Terminology:
-- Sentence style:
-- Paragraph logic:
+technical facts and notation
+-> claim strength and scope
+-> venue convention
+-> author voice
+-> exemplar-derived style
+```
+
+## Non-Negotiable Rules
+
+- Ground every technical claim in provided materials: drafts, notes, equations, proofs, code, logs, tables, figures, videos, reviewer comments, `.bib` files, or explicit author feedback.
+- Never invent methods, datasets, baselines, numerical results, ablations, citations, theorem assumptions, mechanisms, robot hardware specs, implementation details, or related-work accusations.
+- Do not let "Architect" or any structural pass supply missing physical, mathematical, causal, or empirical mechanisms. Classify them as `CONFIRMED_MECHANISM`, `PLAUSIBLE_HYPOTHESIS`, or `AUTHOR_INSIGHT_NEEDED`.
+- Preserve LaTeX commands, labels, equations, macros, citations, figure references, table references, theorem scope, and numerical values unless the user explicitly requests authorized editing.
+- Verify new citations through available bibliographic sources or the user's `.bib`; do not write BibTeX from memory.
+- Keep technical meaning stable during polishing, translation polishing, de-AI editing, and style matching.
+- Use example papers only to infer high-level community conventions. Do not copy distinctive consecutive phrasing or import exemplar facts, claims, citations, limitations, assumptions, or terminology definitions.
+- Use current target-venue instructions when formatting, page limits, AI disclosure, anonymity, or submission rules matter.
+
+## Editing Modes
+
+Choose the least invasive mode that satisfies the request. If the user says "polish" and gives no broader permission, default to `conservative-edit`.
+
+| Mode | Allowed | Forbidden |
+| --- | --- | --- |
+| `diagnose-only` | Identify logic gaps, claim risks, missing evidence, paragraph roles, and author questions. | Rewriting paper text. |
+| `conservative-edit` | Grammar, terminology, local clarity, de-AI cleanup, scoped claim downgrades. | Reordering sections, adding claims, changing numbers or theorem scope. |
+| `trim-and-sharpen` | Compress padded prose, remove filler, replace weak verbs, improve stress and rhythm. | New claims, new mechanisms, changed evidence strength, changed numbers/citations/labels. |
+| `structural-revision` | Rebuild reader path, reorder paragraphs, split/merge paragraphs, add paragraph contracts. | New claims or unsupported mechanisms. |
+| `editorial-rebuild` | Rebuild a section from a claim ledger and argument graph with traceability. | Free-form invention or untracked changes. |
+| `submission-audit` | Check claim support, citations, numbers, venue compliance, anonymity, AI disclosure, reproducibility, LaTeX. | Improving prose beyond issue-targeted fixes. |
+
+Read `references/agent-orchestration.md` for role permissions and the issue-driven revision loop when the task spans more than a short local edit.
+
+## Paper State First
+
+For paper-level tasks, long sections, multi-round revision, or any work where claims can drift, create or update a structured Paper State before rewriting:
+
+```text
+.paper-state/
+  project.yaml
+  material_map.json
+  claim_ledger.json
+  argument_graph.json
+  terminology.json
+  insight_cards.json
+  style_profile.json
+  paragraph_contracts.jsonl
+  review_issues.jsonl
+  traceability_matrix.json
+  revision_log.jsonl
+```
+
+Use:
+
+```bash
+python scripts/build_paper_state.py <project>
+```
+
+Read `references/paper-state.md` for file semantics and `schemas/` for machine-readable shapes. If the user asks only for a small local rewrite, build a compact internal state instead of creating files.
+
+## Quick Workflow
+
+1. Identify the task and editing mode.
+2. Inventory materials. If a folder is available, run:
+
+   ```bash
+   python scripts/inventory_materials.py <project>
+   ```
+
+3. Separate factual materials from style examples.
+4. Build or update the claim ledger. Read `references/material-audit.md`.
+5. For paper-level or structural work, build the argument graph, author insight cards, and paragraph contracts before rewriting. Read `references/paragraph-contracts.md`.
+6. Choose role passes only as needed:
+   - Evidence Curator
+   - Community Taste Analyst
+   - Story Architect
+   - Scientific Writer
+   - Language Editor
+   - Review Board
+   - Integrity Verifier
+7. Draft or revise from licensed claims and paragraph contracts.
+8. Run deterministic gates before delivery when feasible.
+9. Return the revised artifact plus unresolved facts, traceability warnings, and quality-gate status.
+
+Prefer a useful draft with explicit uncertainties over a long list of broad questions. Ask at most 1-3 targeted questions only when the core contribution, target venue, or evidence boundary is ambiguous enough to change the paper.
+
+## Resource Routing
+
+- Paper State and schemas: `references/paper-state.md`, `schemas/*.schema.json`
+- Material inventory and claim ledger: `references/material-audit.md`
+- Paper writing, polishing, reader path, abstracts, introductions, experiments: `references/writing-workflows.md`
+- Language sharpening, de-AI editing, trim-first revision, sentence stress, and bilingual polishing: `references/language-polishing.md`
+- Paragraph contracts: `references/paragraph-contracts.md`
+- Traceability matrix, related-work diplomacy, and quality gates: `references/traceability.md`
+- Multi-role orchestration and reviewer issue loop: `references/agent-orchestration.md`
+- Scientific claim calibration and red-line terms: `references/scientific-language-constraints.md`
+- Community taste and style distillation: `references/community-taste.md`, `references/taste-packs/**`
+- Venue tone: `references/venue-packs.md`, `references/venue-style.md`, and relevant `references/taste-packs/venues/*.yaml`
+- Experiment reporting and reproducibility: `references/reproducibility-reporting.md`
+- Figures, captions, tables, plotting code: `references/plotting-and-figures.md`
+- Rebuttals and reviewer responses: `references/review-rebuttal.md`
+- AI disclosure, privacy, ethics, and author responsibility: `references/ai-disclosure-ethics.md`
+- Provenance notes: `references/source-notes.md`
+
+## Deterministic Gates
+
+Run relevant gates after substantial edits:
+
+```bash
+python scripts/audit_claim_evidence.py <project>
+python scripts/audit_cross_section_consistency.py <project>
+python scripts/audit_style_risk.py <draft-or-project>
+python scripts/audit_language_density.py <draft-or-project>
+python scripts/audit_scientific_claims.py <draft-or-project>
+python scripts/audit_terminology.py <project>
+python scripts/check_latex_citations.py <project>
+```
+
+When before/after drafts are available, also run:
+
+```bash
+python scripts/compare_revision_style.py <before> <after>
+```
+
+For LaTeX projects, compile when feasible. The final status is not a subjective score; report:
+
+```text
+PASS: 0 critical issues
+BLOCKED: abstract claim C8 lacks evidence
+WARN: 3 minor style risks remain
+```
+
+## Style Distillation
+
+When writing samples or exemplar papers are provided:
+
+1. Build a structured community taste profile rather than cloning one author's phrases.
+2. Extract section moves, sentence-length distribution, citation placement, claim qualification, transition density, proof/experiment interpretation patterns, and avoid-list.
+3. Store durable profiles in `.paper-state/style_profile.json` when the work spans more than one response.
+4. Use style only after factual accuracy, claim strength, venue fit, and author voice are protected.
+5. Check that style examples did not leak facts into the target draft.
+
+Use language modes after factual constraints:
+
+- `cold-dense`: short, precise, restrained, high-density prose for control, robotics, Automatica, T-RO, RA-L, CDC/ACC, and theorem-heavy ICRA/IROS work.
+- `narrative-persuasive`: stronger reader path and paragraph momentum for broader-audience venues, while still avoiding hype and unsupported breadth.
+
+For requests such as "de-AI", "make this sharper", "less plastic", "more concise", "去 AI 味", "更锋利", or "更短更准", use `workflows/trim-and-sharpen.yaml` and read `references/language-polishing.md`.
+
+If the user asks to see the distilled profile, return a concise operational profile:
+
+```text
+Compact Taste Profile
+- Community assumptions:
+- Section moves:
 - Claim style:
-- Reviewer-facing focus:
+- Citation style:
+- Sentence rhythm:
 - Avoid:
 ```
 
-Keep visible profiles concise and operational.
-
-## Output contracts
+## Output Contracts
 
 For drafting:
 
 - Return publishable prose in the requested format: LaTeX, Markdown, Word-ready text, or plain text.
-- Include a short "open facts" list only for facts that block correctness.
-- Keep author-facing notes outside the paper text.
+- Keep author-facing notes outside paper text.
+- Include only open facts that block correctness.
 
 For polishing:
 
 - Return the revised text first.
-- Then list only high-impact edits: claim sharpening, structure changes, terminology fixes, tone changes, citation/result warnings.
-- Preserve the user's technical intent even if the original wording is rough.
-- If style examples are supplied, apply the compact writing profile without exposing it unless requested.
+- Then list only high-impact edits and verification warnings.
+- Preserve the user's technical intent even when the original wording is rough.
+
+For structural revision:
+
+- Provide or update paragraph contracts first.
+- Make each paragraph serve one primary reader function.
+- Provide a traceability note for changed claims.
 
 For scientific language auditing:
 
-- Return risky phrases with the evidence problem and a replacement.
+- Return risky phrases with evidence problems and replacements.
 - Downgrade unsupported causal, novelty, optimality, stability, robustness, safety, significance, and generalization claims.
-- Prefer precise scoped claims over vague hedging.
-
-For de-AI editing:
-
-- Remove formulaic AI patterns, inflated significance claims, vague overimportance language, repetitive transitions, and generic conclusions.
-- Keep the register appropriate for T-RO, RA-L, ICRA, Science Robotics, or the user's chosen venue.
-- Preserve author voice if the user provides a writing sample, but do not over-humanize into casual prose.
 
 For rebuttal:
 
 - Parse reviewer comments into atomic issues.
-- For each issue, answer with evidence, planned revision, and a concise respectful response.
-- Do not concede a flaw that is not supported by the paper or author materials.
+- Answer each issue with evidence, planned revision, and respectful wording.
+- Do not concede an unsupported flaw.
 
 For plotting code:
 
 - Preserve data provenance and metric definitions.
+- Patch scripts when available.
 - Improve readability, accessibility, vector export, LaTeX integration, and reproducibility.
-- Save or patch scripts rather than only describing changes when code is available.
 
-## Style defaults
+## Delivery Checklist
 
-- For robotics and control papers, foreground the system, assumptions, stability/safety constraints, real-world setup, and reproducibility.
-- For AI/CS papers, foreground the task, model/algorithm, baselines, ablations, metrics, and failure modes.
-- For Science Robotics-style writing, make the biological/physical/robotic significance legible to a broader technical audience without diluting mechanism and evidence.
-- For IEEE T-RO and RA-L, favor dense, precise, technically complete prose with clean notation and traceable experiments.
-- For ICRA/IROS, favor clear problem framing, method overview figures, strong empirical claims, and concise contribution bullets.
+Before final delivery on a paper-level task, check:
 
-## Example invocations
-
-- "Use this skill to rewrite my abstract for RA-L. Here are the method notes and result table."
-- "Polish this T-RO introduction in LaTeX, but do not change the technical claims."
-- "Turn these experiment logs and plot scripts into a publication-quality ablation figure and caption."
-- "Write a rebuttal from these reviewer comments and our extra experiment results."
-- "De-AI this Science Robotics significance paragraph while preserving the mechanism and evidence."
-- "Rewrite this introduction to match the style of these exemplar paragraphs while preserving our technical claims."
+- Numbers and units match source materials.
+- Theorem-level verbs map to theorem/proof evidence.
+- Empirical comparative claims map to results.
+- Causal claims map to proof, ablation, intervention, or author-approved mechanism.
+- Abstract claims reappear later with support.
+- Contribution bullets are supported.
+- Experiments each support a claim.
+- Conclusions do not escalate evidence strength.
+- Related-work contrasts use diplomatic, verified relation terms.
+- Style examples did not leak facts.
+- Citations, labels, figures, tables, and equations resolve or are flagged.
+- AI disclosure guidance matches venue policy when relevant.

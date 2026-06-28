@@ -1,0 +1,31 @@
+name: foundation-models
+domain: ai
+reader_assumptions:
+  - understands pretraining, fine-tuning, prompting, benchmarks, and scaling caveats
+must_define:
+  - base model
+  - data source
+  - adaptation method
+  - evaluation tasks
+  - compute and decoding settings
+claims_requiring_evidence:
+  - state-of-the-art
+  - reasoning improvement
+  - generalization
+  - robustness
+expected_evidence:
+  - current baselines
+  - benchmark protocol
+  - ablations
+  - data contamination checks when relevant
+common_reviewer_objections:
+  - benchmark saturation
+  - missing compute details
+  - overclaiming from narrow tasks
+standard_terms:
+  - adaptation
+  - evaluation protocol
+  - held-out benchmark
+avoid:
+  - human-level
+  - emergent unless justified and defined

@@ -1,0 +1,28 @@
+name: structural-revision
+purpose: Rebuild reader path while preserving factual and claim boundaries.
+allowed_actions:
+  - build_or_update_paper_state
+  - build_argument_graph
+  - create_paragraph_contracts
+  - reorder_paragraphs
+  - split_or_merge_paragraphs
+  - rewrite_within_contracts
+forbidden_actions:
+  - introduce_new_claims
+  - invent_mechanisms
+  - strengthen_claims_without_evidence
+  - change_numbers_or_units
+  - copy_exemplar_phrases
+required_references:
+  - references/paper-state.md
+  - references/paragraph-contracts.md
+  - references/traceability.md
+required_checks:
+  - audit_claim_evidence
+  - audit_cross_section_consistency
+  - audit_style_risk
+outputs:
+  - paragraph_contracts
+  - revised_section_or_plan
+  - traceability_notes
+  - unresolved_author_questions

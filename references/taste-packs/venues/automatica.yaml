@@ -1,0 +1,22 @@
+name: automatica
+venue: Automatica
+style:
+  - theorem precision
+  - concise motivation
+  - assumptions before claims
+  - restrained significance language
+abstract_moves:
+  - problem
+  - limitation or gap
+  - method or analysis object
+  - formal property
+  - scoped empirical or illustrative evidence
+reviewer_priorities:
+  - mathematical correctness
+  - novelty relative to control literature
+  - assumption clarity
+  - proof completeness
+avoid:
+  - marketing language
+  - long implementation inventories
+  - empirical-only stability language

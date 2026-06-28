@@ -1,0 +1,27 @@
+name: submission-audit
+purpose: Audit readiness without broad prose improvement.
+allowed_actions:
+  - claim_support_check
+  - citation_check
+  - number_and_unit_check
+  - venue_compliance_check
+  - anonymity_check
+  - ai_disclosure_check
+  - reproducibility_check
+  - latex_reference_check
+forbidden_actions:
+  - broad_rewrite
+  - style_cloning
+  - new_claim_generation
+  - unrequested_restructuring
+required_checks:
+  - audit_claim_evidence
+  - audit_cross_section_consistency
+  - check_latex_citations
+  - audit_scientific_claims
+outputs:
+  - pass_blocked_warn_report
+  - critical_issues
+  - major_issues
+  - minor_issues
+  - author_required_actions

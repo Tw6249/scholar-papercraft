@@ -1,0 +1,12 @@
+{
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "The method guarantees safety.",
+      "strength": "theorem",
+      "status": "confirmed",
+      "scope": [],
+      "evidence": []
+    }
+  ]
+}

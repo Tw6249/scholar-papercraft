@@ -1,0 +1,29 @@
+name: manipulation
+domain: robotics
+reader_assumptions:
+  - understands contact, grasping, perception, and execution uncertainty
+must_define:
+  - robot arm and end effector
+  - object set
+  - sensing pipeline
+  - task success criteria
+  - controller or policy interface
+claims_requiring_evidence:
+  - dexterity
+  - generalization
+  - robustness to object variation
+  - real-time control
+expected_evidence:
+  - object split
+  - trial counts
+  - failure modes
+  - baseline comparison
+common_reviewer_objections:
+  - object set too narrow
+  - perception assumptions hidden
+standard_terms:
+  - pick-and-place
+  - contact-rich manipulation
+  - task success rate
+avoid:
+  - general manipulation capability from one task family

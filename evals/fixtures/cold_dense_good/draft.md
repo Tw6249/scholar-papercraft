@@ -1,0 +1,1 @@
+The reserve allocation preserves local feasibility at each iterate. The claim is narrower than optimality: the centralized objective is recovered only after the master allocation converges. This distinction matters because bounded inputs break uniform burden splitting.

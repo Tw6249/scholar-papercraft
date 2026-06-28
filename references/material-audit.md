@@ -18,19 +18,40 @@ Create a compact inventory before drafting:
 
 Run `scripts/inventory_materials.py <project>` when a folder is available.
 
+For paper-level work, create a durable Paper State before drafting:
+
+```bash
+python scripts/build_paper_state.py <project>
+```
+
+Then store the inventory in `.paper-state/material_map.json`, not only in chat context.
+
 ## Claim-evidence ledger
 
 Use this table internally, then expose only the useful parts to the user:
 
-| ID | Claim | Evidence source | Status | Draft wording | Risk |
-| --- | --- | --- | --- | --- | --- |
-| C1 | What the paper proves/shows | file/table/figure/log | confirmed / weak / missing | exact sentence | overclaim / missing baseline / unsupported |
+| ID | Claim | Evidence source | Status | Strength | Scope | Allowed verbs | Forbidden expansions | Risk |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| C1 | What the paper proves/shows | file/table/figure/log | confirmed / weak / missing | theorem / experiment / hypothesis | assumptions/settings | proves, shows, suggests | general safety | overclaim / missing baseline / unsupported |
 
 Status definitions:
 
 - `confirmed`: directly supported by a source artifact or explicit author statement.
 - `weak`: plausible, but the source does not fully support the strength of the wording.
 - `missing`: needed for the paper, but not present in the materials.
+- `author_confirmed`: directly supplied by the author but still may need citation, proof, or result support before publication.
+- `deprecated`: no longer part of the active paper argument.
+
+Strength definitions:
+
+- `theorem`: formal proof or theorem statement under stated assumptions.
+- `certified`: verified constraint satisfaction or certified property.
+- `controlled_experiment`: fair empirical comparison with repeated trials or clear protocol.
+- `ablation`: component or mechanism study.
+- `case_study`: single scenario, demo, or illustrative run.
+- `qualitative_observation`: observation without controlled isolation.
+- `hypothesis`: plausible explanation that must be scoped.
+- `missing`: claim needed but unsupported.
 
 Risk labels:
 
@@ -72,3 +93,11 @@ Before returning prose:
 - Check abstract claims reappear in experiments or theory.
 - Check limitations do not undermine the main contribution without explanation.
 - Check self-citations and acknowledgments for anonymity if under double-blind review.
+
+For long drafts, run:
+
+```bash
+python scripts/audit_claim_evidence.py <project>
+python scripts/build_traceability_matrix.py <project>
+python scripts/audit_cross_section_consistency.py <project>
+```

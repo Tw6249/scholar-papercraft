@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scholar Papercraft Argument Graph",
+  "type": "object",
+  "required": ["nodes", "edges"],
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "text"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {
+            "type": "string",
+            "enum": ["problem", "gap", "insight", "method", "definition", "theory", "experiment", "limitation", "contribution", "conclusion"]
+          },
+          "text": {"type": "string"},
+          "claim_ids": {"type": "array", "items": {"type": "string"}},
+          "evidence": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {"type": "string"},
+          {"type": "string"},
+          {
+            "type": "string",
+            "enum": ["motivates", "resolved_by", "implemented_by", "certified_by", "tested_by", "illustrated_by", "qualifies", "contrasts_with", "depends_on"]
+          }
+        ],
+        "minItems": 3,
+        "maxItems": 3
+      }
+    }
+  },
+  "additionalProperties": true
+}

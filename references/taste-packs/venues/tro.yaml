@@ -1,0 +1,22 @@
+name: tro
+venue: IEEE T-RO
+style:
+  - dense technical prose
+  - traceable experiments
+  - clear robotics system assumptions
+  - method and evidence balance
+abstract_moves:
+  - robotics problem
+  - technical gap
+  - method
+  - theoretical or algorithmic property
+  - hardware/simulation evidence
+reviewer_priorities:
+  - reproducibility
+  - robot relevance
+  - baseline fairness
+  - notation clarity
+avoid:
+  - unsupported real-world claims
+  - vague robustness
+  - under-described hardware setup

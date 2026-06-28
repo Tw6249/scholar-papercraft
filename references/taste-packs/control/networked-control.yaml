@@ -1,0 +1,27 @@
+name: networked-control
+domain: control
+reader_assumptions:
+  - knows agents, graphs, connectivity, delays, and distributed feedback
+must_define:
+  - graph model
+  - sensing or communication topology
+  - update rate or sampling
+  - local information available to each agent
+claims_requiring_theorem:
+  - connectivity preservation
+  - consensus
+  - bounded-input feasibility
+  - distributed implementability
+expected_evidence:
+  - assumptions on graph connectivity
+  - communication limitations
+  - scalability or agent-count study when claimed
+common_reviewer_objections:
+  - centralized quantity hidden in local controller
+  - simulation size too small for scalability claim
+standard_terms:
+  - algebraic connectivity
+  - Laplacian
+  - local neighborhood
+avoid:
+  - scalable without complexity or multi-size evidence

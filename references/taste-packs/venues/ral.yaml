@@ -1,0 +1,21 @@
+name: ral
+venue: IEEE RA-L
+style:
+  - compressed argument
+  - fast reviewer scanning
+  - clear contribution bullets
+  - concise experiments
+abstract_moves:
+  - problem
+  - gap
+  - method
+  - key result
+  - scope
+reviewer_priorities:
+  - novelty visible early
+  - compact method explanation
+  - experiment sufficiency
+  - page-budget discipline
+avoid:
+  - long literature survey in main text
+  - secondary implementation details in abstract

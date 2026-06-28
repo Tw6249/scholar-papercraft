@@ -1,0 +1,27 @@
+name: nonlinear-stability
+domain: control
+reader_assumptions:
+  - knows Lyapunov arguments, invariance, and local/global stability distinctions
+must_define:
+  - equilibrium or reference trajectory
+  - stability notion
+  - domain of attraction or operating region
+  - disturbance and model-mismatch assumptions
+claims_requiring_theorem:
+  - asymptotic stability
+  - exponential stability
+  - input-to-state stability
+  - boundedness
+expected_evidence:
+  - Lyapunov function or cited theorem
+  - assumptions before claim
+  - empirical plots scoped as evidence, not proof
+common_reviewer_objections:
+  - local result described as global
+  - bounded tracking error described as stability
+standard_terms:
+  - Lyapunov function
+  - invariant set
+  - ultimate boundedness
+avoid:
+  - stable based only on a tracking plot

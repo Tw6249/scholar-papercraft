@@ -1,0 +1,1 @@
+Bounded authority changes the reader's view of distributed safety. A decomposition that preserves the global row can still assign an infeasible local command, so the paper separates aggregate feasibility from local implementability. The reserve variable carries that distinction through the method and the experiments.

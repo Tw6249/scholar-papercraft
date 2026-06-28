@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scholar Papercraft Traceability Matrix",
+  "type": "object",
+  "required": ["mappings"],
+  "properties": {
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "claim_id", "status"],
+        "properties": {
+          "id": {"type": "string"},
+          "claim_id": {"type": "string"},
+          "abstract": {"type": "string"},
+          "intro_contribution": {"type": "string"},
+          "method_or_theory": {"type": "array", "items": {"type": "string"}},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "experiment": {"type": "array", "items": {"type": "string"}},
+          "conclusion": {"type": "string"},
+          "evidence_strength": {"type": "string"},
+          "status": {"type": "string", "enum": ["supported", "weak", "missing", "orphan", "escalated", "needs_author"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {"$ref": "review-issue.schema.json"}
+    }
+  },
+  "additionalProperties": true
+}

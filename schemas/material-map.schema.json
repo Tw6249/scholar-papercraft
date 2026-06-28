@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scholar Papercraft Material Map",
+  "type": "object",
+  "required": ["materials"],
+  "properties": {
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "kind", "factual_status"],
+        "properties": {
+          "id": {"type": "string"},
+          "path": {"type": "string"},
+          "kind": {
+            "type": "string",
+            "enum": ["draft", "author_note", "equation", "proof", "code", "log", "table", "figure", "video", "citation", "style_example", "review", "other"]
+          },
+          "factual_status": {
+            "type": "string",
+            "enum": ["factual_source", "style_only", "citation_source", "unverified", "derived"]
+          },
+          "description": {"type": "string"},
+          "claim_ids": {"type": "array", "items": {"type": "string"}},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

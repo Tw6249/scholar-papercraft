@@ -1,0 +1,31 @@
+name: cbf-safety
+domain: control
+reader_assumptions:
+  - understands barrier functions, feasibility, constraints, and forward invariance
+must_define:
+  - plant model and state/input constraints
+  - barrier function and safe set
+  - sampled or continuous-time implementation
+  - solver objective and hard/soft constraints
+claims_requiring_theorem:
+  - safety guarantee
+  - forward invariance
+  - recursive feasibility
+  - stability
+expected_evidence:
+  - theorem assumptions before guarantees
+  - constraint violation metrics for simulations
+  - failure cases when feasibility is lost
+common_reviewer_objections:
+  - sampled implementation not covered by continuous-time proof
+  - input bounds ignored in CBF feasibility
+  - simulation treated as safety proof
+standard_terms:
+  - control barrier function
+  - forward invariance
+  - feasibility
+  - input constraints
+avoid:
+  - safe in general
+  - robust safety without disturbance set
+  - real-world validation for simulation-only evidence

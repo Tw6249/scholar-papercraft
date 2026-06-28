@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scholar Papercraft Claim Ledger",
+  "type": "object",
+  "required": ["claims"],
+  "properties": {
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "claim", "strength", "status"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Za-z]+[A-Za-z0-9_-]*$"},
+          "claim": {"type": "string"},
+          "strength": {
+            "type": "string",
+            "enum": ["definition", "assumption", "theorem", "certified", "controlled_experiment", "ablation", "case_study", "qualitative_observation", "hypothesis", "missing"]
+          },
+          "scope": {"type": "array", "items": {"type": "string"}},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "allowed_verbs": {"type": "array", "items": {"type": "string"}},
+          "forbidden_expansions": {"type": "array", "items": {"type": "string"}},
+          "status": {
+            "type": "string",
+            "enum": ["confirmed", "weak", "missing", "author_confirmed", "deprecated"]
+          },
+          "risk": {"type": "array", "items": {"type": "string"}},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

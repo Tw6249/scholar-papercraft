@@ -1,0 +1,23 @@
+name: conservative-edit
+purpose: Improve local clarity while preserving structure, claims, numbers, notation, and citations.
+allowed_actions:
+  - grammar_edit
+  - terminology_consistency
+  - local_sentence_clarity
+  - remove_formulaic_transitions
+  - downgrade_unsupported_wording
+  - preserve_author_voice
+forbidden_actions:
+  - reorder_sections
+  - add_claims
+  - change_numbers
+  - change_theorem_scope
+  - add_unverified_citations
+  - import_style_example_facts
+required_checks:
+  - audit_scientific_claims
+  - audit_style_risk
+outputs:
+  - revised_text_first
+  - high_impact_edit_notes
+  - verification_warnings

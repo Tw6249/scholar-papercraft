@@ -1,0 +1,31 @@
+name: distributed-optimization
+domain: control
+reader_assumptions:
+  - knows consensus, primal-dual methods, decomposition, and convergence assumptions
+must_define:
+  - communication graph
+  - locality assumptions
+  - global objective or constraint coupling
+  - per-agent variables
+  - convergence or termination criterion
+claims_requiring_theorem:
+  - equivalence to centralized solution
+  - convergence
+  - optimality
+  - feasibility at every iterate
+expected_evidence:
+  - proof of invariant or convergence property
+  - communication/computation cost
+  - comparison to centralized or baseline distributed method
+common_reviewer_objections:
+  - hidden centralized information
+  - unclear graph connectivity assumption
+  - asymptotic result used for finite-time implementation
+standard_terms:
+  - primal feasibility
+  - dual variable
+  - decomposition
+  - consensus
+avoid:
+  - fully distributed unless no global coordinator or hidden aggregate is used
+  - optimal without stated objective and proof

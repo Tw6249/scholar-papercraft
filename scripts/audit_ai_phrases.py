@@ -3,6 +3,9 @@
 
 This is a lightweight heuristic scanner. A hit is not proof of AI writing; use
 the output as an editing checklist.
+
+For contextual risk judgments, prefer audit_style_risk.py. This older script is
+kept as a fast coarse scan and should not be treated as a token ban list.
 """
 
 from __future__ import annotations

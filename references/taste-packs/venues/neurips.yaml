@@ -1,0 +1,21 @@
+name: neurips
+venue: NeurIPS
+style:
+  - problem abstraction
+  - baseline and ablation clarity
+  - careful claims about generalization
+  - reproducibility and limitations awareness
+abstract_moves:
+  - broad task
+  - precise bottleneck
+  - method
+  - benchmark or theoretical evidence
+  - scoped implication
+reviewer_priorities:
+  - novelty and significance
+  - experimental rigor
+  - reproducibility
+  - limitations and ethics when relevant
+avoid:
+  - state-of-the-art without current fair comparison
+  - vague generalization claims

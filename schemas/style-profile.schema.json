@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scholar Papercraft Style Profile",
+  "type": "object",
+  "properties": {
+    "corpus": {
+      "type": "object",
+      "properties": {
+        "venue": {"type": "string"},
+        "domain": {"type": "string"},
+        "num_papers": {"type": "integer", "minimum": 0},
+        "sections_analyzed": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "sections": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "typical_moves": {"type": "array", "items": {"type": "string"}},
+          "median_sentence_words": {"type": "number"},
+          "citation_density": {"type": "string"},
+          "claim_style": {"type": "string"},
+          "avoid": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "global_avoid": {"type": "array", "items": {"type": "string"}},
+    "fact_isolation_notes": {"type": "array", "items": {"type": "string"}},
+    "language_modes": {"type": "object", "additionalProperties": true},
+    "rhetorical_moves": {
+      "type": "object",
+      "additionalProperties": {"type": "array", "items": {"type": "string"}}
+    },
+    "section_patterns": {
+      "type": "object",
+      "additionalProperties": {"type": "array", "items": {"type": "string"}}
+    },
+    "preferred_verbs": {"type": "array", "items": {"type": "string"}},
+    "avoid_phrases": {"type": "array", "items": {"type": "string"}},
+    "phrase_copying_risk_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

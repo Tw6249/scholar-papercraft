@@ -1,50 +1,60 @@
 # Scholar Papercraft
 
-`scholar-papercraft` is a Codex skill for evidence-grounded academic paper writing and revision.
+`scholar-papercraft` is an evidence-grounded academic writing and editing skill for robotics, control, AI, and computer science papers.
 
-It helps turn existing research materials, such as method notes, LaTeX drafts, experiment logs, figures, tables, code, reviewer comments, and `.bib` files, into polished paper text without inventing methods, results, claims, or citations.
+It now treats a paper as a structured, auditable object rather than only prose. For substantial work it builds a `.paper-state/` with claim ledgers, paragraph contracts, argument graphs, author insight cards, taste profiles, review issues, and traceability matrices.
 
-## What it supports
+## Core Capabilities
 
-- Paper drafting and polishing for robotics, control, AI, and computer science.
-- Reader-centered restructuring for drafts that read like technical reports, experiment logs, or feature inventories rather than publishable arguments.
-- Venue-aware writing for styles such as Science Robotics, T-RO, RA-L, ICRA/IROS, CDC/ACC, NeurIPS, ICML, and ICLR.
-- Style distillation from exemplar papers, paragraphs, abstracts, rebuttals, or reviews for author-voice matching and sample-guided de-AI editing.
-- Scientific claim auditing for words such as `stable`, `safe`, `robust`, `real-time`, `optimal`, `guarantee`, `state-of-the-art`, and `generalize`.
-- Rebuttal and reviewer-response drafting from concrete evidence.
-- Figure, table, caption, and plotting-code improvement.
-- Reproducibility, AI-disclosure, citation-key, and reporting checks.
+- Material-driven drafting and revision from notes, LaTeX/Word drafts, equations, proofs, code, logs, tables, figures, reviewer comments, and `.bib` files.
+- Structured Paper State for long or multi-pass paper work.
+- Claim-evidence ledgers with evidence strength, scope, allowed verbs, and forbidden expansions.
+- Paragraph contracts before structural rewriting.
+- Community taste profiles and domain x venue packs without style-example fact leakage.
+- Dual language modes: `cold-dense` and `narrative-persuasive`.
+- Trim-and-sharpen language editing for shorter, sharper, less generic prose.
+- Reviewer issue schemas and role-bounded review passes.
+- Deterministic gates for claim support, cross-section consistency, contextual style risk, terminology, citations, and LaTeX references.
+- Rebuttal, figure/table/caption, reproducibility, and AI-disclosure support.
 
-## Use
+## Typical Use
 
 ```text
-Use $scholar-papercraft to polish this RA-L abstract without changing technical claims.
+Use $scholar-papercraft to diagnose this T-RO introduction and build paragraph contracts before rewriting.
 ```
 
 ```text
-Use $scholar-papercraft to audit this T-RO draft for unsupported stability, safety, robustness, and real-time claims.
+Use $scholar-papercraft to audit this abstract for unsupported safety, robustness, and conclusion-escalation claims.
 ```
 
 ```text
-Use $scholar-papercraft to turn these experiment results and plotting code into a publication-quality figure and caption.
+Use $scholar-papercraft to create a Paper State for this LaTeX project and generate a claim traceability matrix.
 ```
 
-```text
-Use $scholar-papercraft to rewrite this introduction in the style of these exemplar paragraphs while preserving our technical claims.
-```
-
-## Included checks
-
-- `scripts/inventory_materials.py`: summarize likely paper materials in a project folder.
-- `scripts/audit_scientific_claims.py`: flag high-risk scientific claim terms.
-- `scripts/check_latex_citations.py`: check LaTeX citation keys against local `.bib` files.
-- `scripts/audit_ai_phrases.py`: flag common AI-like academic phrasing.
-- `scripts/title_to_bib.py`: experimental helper for recovering BibTeX candidates from paper titles. Treat its output as a draft and inspect the JSON report before adding entries to a paper.
-
-Example:
+## Key Scripts
 
 ```bash
-python scripts/title_to_bib.py --file missing_titles.txt --out recovered.bib --report recovered_report.json
+python scripts/build_paper_state.py <project>
+python scripts/inventory_materials.py <project>
+python scripts/audit_claim_evidence.py <project>
+python scripts/build_traceability_matrix.py <project>
+python scripts/audit_cross_section_consistency.py <project>
+python scripts/audit_style_risk.py <draft-or-project>
+python scripts/audit_language_density.py <draft-or-project>
+python scripts/compare_revision_style.py <before> <after>
+python scripts/audit_scientific_claims.py <draft-or-project>
+python scripts/audit_terminology.py <project>
+python scripts/check_latex_citations.py <project>
+python scripts/render_revision_report.py <project>
+```
+
+`scripts/audit_ai_phrases.py` remains as a fast coarse scanner, but `scripts/audit_style_risk.py` is the preferred contextual linter.
+
+## Validation
+
+```bash
+python -m unittest discover -s tests
+python evals/run_eval.py
 ```
 
 The core skill instructions are in [SKILL.md](SKILL.md).

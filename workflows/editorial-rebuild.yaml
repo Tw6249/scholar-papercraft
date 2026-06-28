@@ -1,0 +1,28 @@
+name: editorial-rebuild
+purpose: Rebuild a section from frozen materials, claim ledger, argument graph, and paragraph contracts.
+allowed_actions:
+  - freeze_materials
+  - confirm_central_proposition
+  - create_section_argument_graph
+  - create_paragraph_contracts
+  - rewrite_section
+  - render_revision_report
+forbidden_actions:
+  - free_form_generation
+  - unstated_causal_explanation
+  - unverified_related_work_contrast
+  - unsupported_venue_claim
+required_inputs:
+  - claim_ledger
+  - argument_graph
+  - paragraph_contracts
+  - source_materials
+required_checks:
+  - audit_claim_evidence
+  - audit_cross_section_consistency
+  - audit_terminology
+outputs:
+  - rebuilt_section
+  - detailed_change_summary
+  - claim_traceability_matrix
+  - quality_gate_report

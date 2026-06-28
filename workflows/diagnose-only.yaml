@@ -1,0 +1,24 @@
+name: diagnose-only
+purpose: Diagnose argument, evidence, style, and venue risks without rewriting manuscript text.
+allowed_actions:
+  - inventory_materials
+  - build_claim_ledger
+  - identify_logic_gaps
+  - identify_missing_evidence
+  - propose_paragraph_roles
+  - ask_author_questions
+forbidden_actions:
+  - rewrite_paper_text
+  - add_claims
+  - invent_mechanisms
+  - modify_numbers_or_citations
+outputs:
+  - material_map
+  - claim_risks
+  - argument_graph_diagnosis
+  - missing_evidence
+  - author_insight_questions
+  - prioritized_repair_actions
+stop_when:
+  - one_to_three_high_leverage_questions_identified
+  - no_rewrite_permission_requested

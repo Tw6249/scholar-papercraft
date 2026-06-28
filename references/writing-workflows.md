@@ -2,11 +2,14 @@
 
 Use this reference for drafting sections, polishing academic prose, translation polishing, and de-AI editing.
 
+For language-only sharpening, trim-first edits, and dual language modes, read `language-polishing.md`.
+
 ## Full paper workflow
 
 1. Build the material inventory and claim ledger.
-2. Confirm target venue and one-sentence contribution if absent.
-3. Draft the paper skeleton:
+2. Create or update `.paper-state/` for long or high-risk work.
+3. Confirm target venue and one-sentence contribution if absent.
+4. Draft the paper skeleton:
    - Title candidates
    - Abstract
    - Introduction with contribution bullets
@@ -14,8 +17,9 @@ Use this reference for drafting sections, polishing academic prose, translation 
    - Method structure
    - Experiments mapped to claims
    - Limitations
-4. Draft section by section, keeping author-facing uncertainty notes outside paper text.
-5. Verify citations, numbers, figure references, and LaTeX syntax.
+5. Create paragraph contracts for any section that needs structural revision.
+6. Draft section by section, keeping author-facing uncertainty notes outside paper text.
+7. Verify claim traceability, citations, numbers, figure references, and LaTeX syntax.
 
 ## Reader-centered argument design
 
@@ -54,6 +58,8 @@ When diagnosing a draft, return prioritized repair actions:
 4. Experiment questions and evidence hierarchy.
 5. Figure/table hierarchy and terminology.
 6. Reproducibility placement, limitations placement, and de-AI language cleanup.
+
+For structural revision, produce paragraph contracts before rewritten prose. Read `paragraph-contracts.md`.
 
 ## Abstract
 
@@ -186,6 +192,10 @@ Polish in this order:
 5. Tone and rhythm.
 6. Grammar and formatting.
 
+Default to `conservative-edit` unless the user explicitly asks for restructuring or the draft cannot be fixed locally. Structural changes should be tied to paragraph contracts and claim ids.
+
+Use `trim-and-sharpen` when the user asks to remove AI taste, make prose shorter, make language sharper, or increase information density. In that workflow, compression precedes fluency.
+
 High-value edits:
 
 - Put old/context information before new information.
@@ -213,6 +223,13 @@ Keep:
 - The author's argument and technical claims.
 
 Do not over-humanize into casual prose. The goal is authored, precise, and field-appropriate writing.
+
+When the edit is substantial, check that the revision did not become longer, weaker, or more generic:
+
+```bash
+python scripts/audit_language_density.py <draft-or-project>
+python scripts/compare_revision_style.py <before> <after>
+```
 
 ## Chinese-to-English paper polishing
 

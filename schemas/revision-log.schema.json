@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scholar Papercraft Revision Log Entry",
+  "type": "object",
+  "required": ["timestamp", "actor", "location", "change"],
+  "properties": {
+    "timestamp": {"type": "string"},
+    "actor": {"type": "string"},
+    "location": {"type": "string"},
+    "issue_id": {"type": "string"},
+    "claim_ids": {"type": "array", "items": {"type": "string"}},
+    "change": {"type": "string"},
+    "verification": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

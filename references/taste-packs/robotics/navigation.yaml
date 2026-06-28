@@ -1,0 +1,29 @@
+name: navigation
+domain: robotics
+reader_assumptions:
+  - understands planning, mapping, localization, collision metrics, and dynamic obstacles
+must_define:
+  - environment class
+  - robot model
+  - map or perception assumption
+  - planner/controller interface
+  - collision and success metrics
+claims_requiring_evidence:
+  - safety
+  - generalization
+  - real-time planning
+  - dynamic obstacle handling
+expected_evidence:
+  - success/collision rates
+  - path efficiency
+  - compute latency
+  - scenario diversity
+common_reviewer_objections:
+  - benchmark not representative
+  - collision-free path described as safety guarantee
+standard_terms:
+  - navigation success
+  - collision rate
+  - replanning frequency
+avoid:
+  - real-world unless hardware field or lab deployment is shown

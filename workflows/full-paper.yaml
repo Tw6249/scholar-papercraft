@@ -1,0 +1,33 @@
+name: full-paper
+purpose: Draft or revise a full paper package from author-provided materials.
+phases:
+  - material_freeze
+  - paper_diagnosis
+  - structure_lock
+  - paragraph_contracts
+  - targeted_drafting
+  - review_board
+  - targeted_revision
+  - deterministic_verification
+  - delivery_package
+required_state_files:
+  - project.yaml
+  - material_map.json
+  - claim_ledger.json
+  - argument_graph.json
+  - terminology.json
+  - paragraph_contracts.jsonl
+  - traceability_matrix.json
+required_checks:
+  - audit_claim_evidence
+  - audit_cross_section_consistency
+  - audit_style_risk
+  - audit_scientific_claims
+  - check_latex_citations
+delivery_package:
+  - revised_manuscript
+  - tracked_or_described_diff
+  - claim_traceability_matrix
+  - unresolved_facts
+  - quality_gate_report
+  - ai_disclosure_suggestion

@@ -1,0 +1,30 @@
+name: robot-learning
+domain: ai
+reader_assumptions:
+  - understands policies, datasets, simulation, baselines, ablations, and deployment gaps
+must_define:
+  - task distribution
+  - training data
+  - architecture or policy class
+  - evaluation protocol
+  - seeds and splits
+claims_requiring_evidence:
+  - generalization
+  - sim-to-real transfer
+  - sample efficiency
+  - robustness
+expected_evidence:
+  - held-out tasks or objects
+  - ablations
+  - variance across seeds
+  - fair baseline compute and data budget
+common_reviewer_objections:
+  - data leakage
+  - cherry-picked tasks
+  - insufficient ablations
+standard_terms:
+  - held-out
+  - ablation
+  - success rate
+avoid:
+  - broad intelligence or autonomy claims

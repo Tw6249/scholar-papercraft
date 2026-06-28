@@ -1,0 +1,28 @@
+name: representation-learning
+domain: ai
+reader_assumptions:
+  - understands embeddings, contrastive losses, pretraining, downstream evaluation, and ablation studies
+must_define:
+  - representation target
+  - objective
+  - data splits
+  - evaluation metrics
+  - downstream tasks
+claims_requiring_evidence:
+  - disentanglement
+  - invariance
+  - transfer
+  - robustness
+expected_evidence:
+  - controlled ablations
+  - downstream task performance
+  - held-out evaluation
+common_reviewer_objections:
+  - proxy task mismatch
+  - weak baseline suite
+standard_terms:
+  - representation
+  - embedding
+  - downstream task
+avoid:
+  - learns semantics without probing evidence

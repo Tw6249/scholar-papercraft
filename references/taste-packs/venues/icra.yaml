@@ -1,0 +1,21 @@
+name: icra
+venue: ICRA/IROS
+style:
+  - clear problem framing
+  - visual method overview
+  - reviewer-friendly contribution bullets
+  - strong empirical narrative
+abstract_moves:
+  - task or system problem
+  - bottleneck
+  - method
+  - evaluation setting
+  - main measured result
+reviewer_priorities:
+  - empirical clarity
+  - practical relevance
+  - baseline fairness
+  - figures that explain the method quickly
+avoid:
+  - theorem-heavy prose before intuition
+  - unsupported deployment readiness

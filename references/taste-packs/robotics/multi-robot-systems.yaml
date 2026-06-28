@@ -1,0 +1,30 @@
+name: multi-robot-systems
+domain: robotics
+reader_assumptions:
+  - understands coordination, collision avoidance, localization, communication, and hardware constraints
+must_define:
+  - robot platform or simulator
+  - sensing and communication assumptions
+  - task environment
+  - safety or success metric
+  - baseline controllers or planners
+claims_requiring_evidence:
+  - scalability
+  - robustness
+  - real-time execution
+  - hardware readiness
+expected_evidence:
+  - number of robots
+  - trials or seeds
+  - success and violation metrics
+  - compute frequency or latency
+common_reviewer_objections:
+  - demo is too scripted
+  - baseline lacks same information
+  - simulation is called real-world validation
+standard_terms:
+  - hardware experiments
+  - simulation study
+  - decentralized policy
+avoid:
+  - fully autonomous unless no hidden human intervention

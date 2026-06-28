@@ -1,4 +1,4 @@
 interface:
   display_name: "Scholar Papercraft"
-  short_description: "Evidence-grounded paper writing with style distillation."
-  default_prompt: "Use $scholar-papercraft to turn my method notes, experiment results, code, draft fragments, and writing samples into a polished robotics or AI paper section."
+  short_description: "Auditable paper editing and sharpening."
+  default_prompt: "Use $scholar-papercraft to trim and sharpen my robotics or AI paper, audit language density, and preserve every supported technical claim."
