@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "figures": [
+    {
+      "figure_id": "Fig. 1",
+      "label": "fig:overclaim",
+      "role": "result",
+      "status": "draft",
+      "claim_ids": ["C1"],
+      "panels": [],
+      "caption_contract": {
+        "text": "The controller guarantees safety and significantly improves tracking.",
+        "caption_claims": [
+          {
+            "claim": "The controller guarantees safety.",
+            "claim_id": "C1",
+            "allowed_strength": "controlled_experiment"
+          }
+        ]
+      },
+      "data_contract": {
+        "sources": [
+          {
+            "path": "results/summary.csv"
+          }
+        ]
+      },
+      "metric_contract": {
+        "name": "tracking error",
+        "definition": "RMSE against the reference trajectory",
+        "direction": "lower_is_better"
+      },
+      "comparison_contract": {
+        "baselines": ["baseline"]
+      },
+      "statistical_contract": {
+        "aggregation": "mean"
+      },
+      "exports": [],
+      "checks": {}
+    }
+  ]
+}
+

@@ -2,6 +2,8 @@
 
 Use this reference when creating or improving figures, captions, tables, or plotting code.
 
+For paper figures that support claims, captions that make result claims, or projects with figure data/scripts/exports available, also use `figure-layer.md` to maintain Figure Cards and run evidence gates.
+
 ## Figure decision guide
 
 | Input | Best output |

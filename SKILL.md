@@ -1,6 +1,6 @@
 ---
 name: scholar-papercraft
-description: Evidence-grounded academic paper drafting, diagnosis, rewriting, review response, language sharpening, and submission auditing for control science, robotics, AI, and computer science. Use when working from author-provided materials such as notes, LaTeX/Word drafts, equations, proofs, code, logs, tables, figures, `.bib` files, reviewer comments, exemplar papers, or writing samples to build publishable prose, trim-and-sharpen edits, paragraph contracts, claim ledgers, traceability matrices, community/venue style profiles, language-density audits, rebuttals, figure captions, reproducibility reports, or contextual de-AI edits. Emphasizes structured Paper State, claim-evidence traceability, paragraph-level contracts, role-bounded revision, deterministic quality gates, cold-dense and narrative-persuasive language modes, and strict protection against invented methods, results, citations, theorem assumptions, mechanisms, or style-example fact leakage.
+description: Evidence-grounded academic paper drafting, diagnosis, rewriting, review response, language sharpening, and submission auditing for control science, robotics, AI, and computer science. Use when working from author-provided materials such as notes, LaTeX/Word drafts, equations, proofs, code, logs, tables, figures, `.bib` files, reviewer comments, exemplar papers, or writing samples to build publishable prose, trim-and-sharpen edits, paragraph contracts, claim ledgers, traceability matrices, Figure Card evidence audits, community/venue style profiles, language-density audits, rebuttals, figure captions, reproducibility reports, or contextual de-AI edits. Emphasizes structured Paper State, claim-evidence and figure-evidence traceability, paragraph-level contracts, role-bounded revision, deterministic quality gates, cold-dense and narrative-persuasive language modes, and strict protection against invented methods, results, citations, theorem assumptions, mechanisms, or style-example fact leakage.
 ---
 
 # Scholar Papercraft
@@ -78,6 +78,9 @@ For paper-level tasks, long sections, multi-round revision, or any work where cl
   paragraph_contracts.jsonl
   review_issues.jsonl
   traceability_matrix.json
+  figure_cards.json
+  figure_audit_report.json
+  figure_dependency_lock.json
   revision_log.jsonl
 ```
 
@@ -110,7 +113,7 @@ Read `references/paper-state.md` for file semantics and `schemas/` for machine-r
    - Review Board
    - Integrity Verifier
 7. Draft or revise from licensed claims and paragraph contracts.
-8. Run deterministic gates before delivery when feasible.
+8. Run deterministic gates before delivery when feasible. For claim-bearing figures, create or update `.paper-state/figure_cards.json` and run the figure gates when feasible.
 9. Return the revised artifact plus unresolved facts, traceability warnings, and quality-gate status.
 
 Prefer a useful draft with explicit uncertainties over a long list of broad questions. Ask at most 1-3 targeted questions only when the core contribution, target venue, or evidence boundary is ambiguous enough to change the paper.
@@ -128,7 +131,7 @@ Prefer a useful draft with explicit uncertainties over a long list of broad ques
 - Community taste and style distillation: `references/community-taste.md`, `references/taste-packs/**`
 - Venue tone: `references/venue-packs.md`, `references/venue-style.md`, and relevant `references/taste-packs/venues/*.yaml`
 - Experiment reporting and reproducibility: `references/reproducibility-reporting.md`
-- Figures, captions, tables, plotting code: `references/plotting-and-figures.md`
+- Figures, captions, tables, plotting code: `references/plotting-and-figures.md`; also read `references/figure-layer.md` when figures support claims, captions make result claims, or figure data/scripts/exports are available.
 - Rebuttals and reviewer responses: `references/review-rebuttal.md`
 - AI disclosure, privacy, ethics, and author responsibility: `references/ai-disclosure-ethics.md`
 - Provenance notes: `references/source-notes.md`
@@ -145,6 +148,9 @@ python scripts/audit_language_density.py <draft-or-project>
 python scripts/audit_scientific_claims.py <draft-or-project>
 python scripts/audit_terminology.py <project>
 python scripts/check_latex_citations.py <project>
+python scripts/build_figure_cards.py <project>
+python scripts/audit_figure_cards.py <project>
+python scripts/audit_caption_claims.py <project>
 ```
 
 When before/after drafts are available, also run:
@@ -226,6 +232,7 @@ For plotting code:
 - Preserve data provenance and metric definitions.
 - Patch scripts when available.
 - Improve readability, accessibility, vector export, LaTeX integration, and reproducibility.
+- For claim-bearing figures, maintain `.paper-state/figure_cards.json` and treat critical Figure Layer gate issues as blocking final caption wording.
 
 ## Delivery Checklist
 
@@ -238,6 +245,7 @@ Before final delivery on a paper-level task, check:
 - Abstract claims reappear later with support.
 - Contribution bullets are supported.
 - Experiments each support a claim.
+- Claim-bearing figures have Figure Cards with data, metric, statistical, caption, and export contracts.
 - Conclusions do not escalate evidence strength.
 - Related-work contrasts use diplomatic, verified relation terms.
 - Style examples did not leak facts.

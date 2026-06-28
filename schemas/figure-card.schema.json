@@ -1,0 +1,317 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/scholar-papercraft/figure-card.schema.json",
+  "title": "Scholar Papercraft Figure Cards",
+  "type": "object",
+  "required": ["figures"],
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "figures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/figure"
+      }
+    }
+  },
+  "$defs": {
+    "figure": {
+      "type": "object",
+      "required": ["figure_id", "label", "status", "claim_ids", "panels", "exports", "checks"],
+      "additionalProperties": true,
+      "properties": {
+        "figure_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "argument_node_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "panels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/panel"
+          }
+        },
+        "data_contract": {
+          "$ref": "#/$defs/data_contract"
+        },
+        "metric_contract": {
+          "$ref": "#/$defs/metric_contract"
+        },
+        "statistical_contract": {
+          "$ref": "#/$defs/statistical_contract"
+        },
+        "comparison_contract": {
+          "$ref": "#/$defs/comparison_contract"
+        },
+        "visual_contract": {
+          "$ref": "#/$defs/visual_contract"
+        },
+        "caption_contract": {
+          "$ref": "#/$defs/caption_contract"
+        },
+        "plotting": {
+          "$ref": "#/$defs/plotting"
+        },
+        "exports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/export"
+          }
+        },
+        "latex_reference": {
+          "$ref": "#/$defs/latex_reference"
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "panel": {
+      "type": "object",
+      "required": ["panel_id"],
+      "additionalProperties": true,
+      "properties": {
+        "panel_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "panel_label": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "data_contract": {
+          "$ref": "#/$defs/data_contract"
+        },
+        "metric_contract": {
+          "$ref": "#/$defs/metric_contract"
+        },
+        "statistical_contract": {
+          "$ref": "#/$defs/statistical_contract"
+        },
+        "comparison_contract": {
+          "$ref": "#/$defs/comparison_contract"
+        },
+        "visual_contract": {
+          "$ref": "#/$defs/visual_contract"
+        },
+        "caption_contract": {
+          "$ref": "#/$defs/caption_contract"
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "needs_data",
+        "needs_metric_definition",
+        "needs_plot_script",
+        "needs_export",
+        "audited",
+        "approved",
+        "stale_data",
+        "stale_script",
+        "stale_caption",
+        "blocked"
+      ]
+    },
+    "data_contract": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path"],
+            "additionalProperties": true,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "type": "string"
+              },
+              "raw_or_processed": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "derived_from": {
+          "type": "array"
+        },
+        "processing_script": {
+          "type": "string"
+        }
+      }
+    },
+    "metric_contract": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "definition": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "direction": {
+          "type": "string",
+          "enum": ["", "higher_is_better", "lower_is_better", "target_is_better", "descriptive"]
+        },
+        "denominator": {
+          "type": "string"
+        }
+      }
+    },
+    "statistical_contract": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "comparison_contract": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "ours": {
+          "type": "string"
+        },
+        "baselines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "visual_contract": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "caption_contract": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "caption_claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "claim": {
+                "type": "string"
+              },
+              "claim_id": {
+                "type": "string"
+              },
+              "claim_type": {
+                "type": "string"
+              },
+              "allowed_strength": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "must_include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "must_not_claim": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "plotting": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "export": {
+      "type": "object",
+      "required": ["path", "format"],
+      "additionalProperties": true,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format": {
+          "type": "string"
+        },
+        "vector": {
+          "type": "boolean"
+        },
+        "dpi": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "width_in": {
+          "type": ["number", "null"]
+        },
+        "height_in": {
+          "type": ["number", "null"]
+        },
+        "sha256": {
+          "type": "string"
+        }
+      }
+    },
+    "latex_reference": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}
+
