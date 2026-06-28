@@ -16,6 +16,7 @@ SKIP_DIRS = {
     ".git",
     ".hg",
     ".svn",
+    ".paper-state",
     "__pycache__",
     ".pytest_cache",
     ".mypy_cache",
@@ -27,6 +28,8 @@ SKIP_DIRS = {
     "build",
     "target",
 }
+
+SEVERITY_RANK = {"critical": 0, "major": 1, "minor": 2, "note": 3}
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -119,8 +122,7 @@ def print_issue_report(title: str, issues: list[Issue]) -> int:
         print("\nPASS: no configured issues found.")
         return 0
 
-    order = {"critical": 0, "major": 1, "minor": 2, "note": 3}
-    issues = sorted(issues, key=lambda item: (order.get(item.severity, 99), item.location, item.issue_type))
+    issues = sorted(issues, key=lambda item: (SEVERITY_RANK.get(item.severity, 99), item.location, item.issue_type))
     counts: dict[str, int] = {}
     for issue in issues:
         counts[issue.severity] = counts.get(issue.severity, 0) + 1
@@ -137,3 +139,10 @@ def print_issue_report(title: str, issues: list[Issue]) -> int:
             print(f"Suggestion: {issue.suggestion}")
         print()
     return 1 if counts.get("critical", 0) else 0
+
+
+def should_fail(issues: list[Issue], fail_on: str) -> bool:
+    if fail_on == "none":
+        return False
+    threshold = SEVERITY_RANK[fail_on]
+    return any(SEVERITY_RANK.get(issue.severity, 99) <= threshold for issue in issues)

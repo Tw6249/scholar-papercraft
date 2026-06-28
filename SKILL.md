@@ -40,6 +40,7 @@ technical facts and notation
 
 - Ground every technical claim in provided materials: drafts, notes, equations, proofs, code, logs, tables, figures, videos, reviewer comments, `.bib` files, or explicit author feedback.
 - Never invent methods, datasets, baselines, numerical results, ablations, citations, theorem assumptions, mechanisms, robot hardware specs, implementation details, or related-work accusations.
+- If a draft has paper-level submission risks, do not make it look publication-ready before resolving the risks. A polished but structurally non-compliant manuscript is a failed output.
 - Do not let "Architect" or any structural pass supply missing physical, mathematical, causal, or empirical mechanisms. Classify them as `CONFIRMED_MECHANISM`, `PLAUSIBLE_HYPOTHESIS`, or `AUTHOR_INSIGHT_NEEDED`.
 - Preserve LaTeX commands, labels, equations, macros, citations, figure references, table references, theorem scope, and numerical values unless the user explicitly requests authorized editing.
 - Verify new citations through available bibliographic sources or the user's `.bib`; do not write BibTeX from memory.
@@ -113,7 +114,7 @@ Read `references/paper-state.md` for file semantics and `schemas/` for machine-r
    - Review Board
    - Integrity Verifier
 7. Draft or revise from licensed claims and paragraph contracts.
-8. Run deterministic gates before delivery when feasible. For claim-bearing figures, create or update `.paper-state/figure_cards.json` and run the figure gates when feasible.
+8. Run deterministic gates before delivery when feasible. For IEEE/control/CS paper-level submission audits, strict gates are mandatory rather than optional. For claim-bearing figures, create or update `.paper-state/figure_cards.json` and run the figure gates when feasible.
 9. Return the revised artifact plus unresolved facts, traceability warnings, and quality-gate status.
 
 Prefer a useful draft with explicit uncertainties over a long list of broad questions. Ask at most 1-3 targeted questions only when the core contribution, target venue, or evidence boundary is ambiguous enough to change the paper.
@@ -130,24 +131,71 @@ Prefer a useful draft with explicit uncertainties over a long list of broad ques
 - Scientific claim calibration and red-line terms: `references/scientific-language-constraints.md`
 - Community taste and style distillation: `references/community-taste.md`, `references/taste-packs/**`
 - Venue tone: `references/venue-packs.md`, `references/venue-style.md`, and relevant `references/taste-packs/venues/*.yaml`
+- IEEE/control/CS strict submission gate: `references/ieee-control-cs-strict.md`
 - Experiment reporting and reproducibility: `references/reproducibility-reporting.md`
 - Figures, captions, tables, plotting code: `references/plotting-and-figures.md`; also read `references/figure-layer.md` when figures support claims, captions make result claims, or figure data/scripts/exports are available.
 - Rebuttals and reviewer responses: `references/review-rebuttal.md`
 - AI disclosure, privacy, ethics, and author responsibility: `references/ai-disclosure-ethics.md`
 - Provenance notes: `references/source-notes.md`
 
+## IEEE / Control / CS Strict Submission Gate
+
+For IEEE, control, robotics, and computer-science paper-level tasks, default to `submission-audit` before any final polishing when one of the following is true:
+
+- the user asks about journal or conference submission readiness;
+- the draft contains theory, simulations, experiments, figures, tables, or references;
+- the target venue is IEEE, TAC, Automatica, TCST, T-RO, RA-L, ICRA, IROS, CDC, ACC, NeurIPS, ICML, ICLR, CVPR, ACL, or a similar archival venue;
+- the manuscript is a full paper draft rather than a local paragraph edit.
+
+In strict mode, do not return publishable final prose until the following gates have been run or explicitly marked unavailable:
+
+1. claim-evidence gate
+2. evidence-boundary gate
+3. contribution-structure gate
+4. theory-assumption gate
+5. experiment/simulation reporting gate
+6. artifact-hygiene gate
+7. figure/table publication gate
+8. reference-maturity gate
+9. venue-shape gate
+10. conclusion-escalation gate
+
+For paper-level IEEE/control/CS submission audit, gates are mandatory, not optional. If source files or Paper State are missing, report `BLOCKED: required audit input missing` rather than silently continuing as a language-polishing task.
+
+Use the strict reference:
+
+```text
+references/ieee-control-cs-strict.md
+```
+
+Prefer the total gate runner when a project folder is available:
+
+```bash
+python scripts/run_ieee_submission_gates.py <project> --venue ieee-control-journal --evidence-boundary simulation_only --fail-on major
+```
+
+Report status as `PASS`, `BLOCKED`, or `WARN`. A `BLOCKED` item must include the manuscript location, reason, and required repair.
+
 ## Deterministic Gates
 
 Run relevant gates after substantial edits:
 
 ```bash
+python scripts/run_ieee_submission_gates.py <project> --venue ieee-control-journal --evidence-boundary simulation_only --fail-on major
 python scripts/audit_claim_evidence.py <project>
 python scripts/audit_cross_section_consistency.py <project>
 python scripts/audit_style_risk.py <draft-or-project>
 python scripts/audit_language_density.py <draft-or-project>
 python scripts/audit_scientific_claims.py <draft-or-project>
+python scripts/audit_experiment_boundary.py <draft-or-project>
+python scripts/audit_artifact_hygiene.py <draft-or-project>
+python scripts/audit_contribution_structure.py <draft-or-project>
+python scripts/audit_theory_assumption_scope.py <draft-or-project>
+python scripts/audit_simulation_reporting.py <draft-or-project>
 python scripts/audit_terminology.py <project>
 python scripts/check_latex_citations.py <project>
+python scripts/audit_reference_maturity.py <project>
+python scripts/audit_ieee_venue_shape.py <project>
 python scripts/build_figure_cards.py <project>
 python scripts/audit_figure_cards.py <project>
 python scripts/audit_caption_claims.py <project>
@@ -209,6 +257,7 @@ For polishing:
 - Return the revised text first.
 - Then list only high-impact edits and verification warnings.
 - Preserve the user's technical intent even when the original wording is rough.
+- For paper-level IEEE/control/CS submission risks, return blocking audit findings before polished prose.
 
 For structural revision:
 

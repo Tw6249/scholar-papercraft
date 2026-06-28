@@ -23,6 +23,7 @@ IGNORE_DIRS = {
     ".git",
     ".hg",
     ".svn",
+    ".paper-state",
     "__pycache__",
     ".pytest_cache",
     ".mypy_cache",
@@ -422,4 +423,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -147,6 +147,8 @@ python scripts/audit_caption_claims.py <project>
 
 Treat gate output as a claim-evidence checklist. Fix critical issues before final prose or captions. Major issues usually block strong wording, even when they do not block figure inclusion.
 
+For IEEE/control/CS strict submission audit, claim-bearing captions require Figure Cards. If no Figure Card exists, do not write result-strength caption claims. Run caption gates with `--fail-on major`; major caption issues block final publication-ready wording.
+
 ## Severity levels
 
 Use deterministic issue counts rather than scores:
@@ -201,4 +203,3 @@ over theorem-level language:
 ```text
 guarantees safety
 ```
-

@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import argparse
 
-from paper_state_common import Issue, load_json, print_issue_report, state_file
+from paper_state_common import Issue, load_json, print_issue_report, should_fail, state_file
 
 
 STRONG_STRENGTHS = {"theorem", "certified", "controlled_experiment", "ablation", "case_study"}
@@ -21,20 +21,43 @@ def claim_location(claim: dict[str, object]) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("project", nargs="?", default=".", help="Project folder containing .paper-state")
+    parser.add_argument("--strict", action="store_true", help="Treat an empty ledger as blocking for paper-level submission audit")
+    parser.add_argument("--fail-on", choices=["critical", "major", "minor", "note", "none"], default="critical")
     args = parser.parse_args()
 
     ledger_path = state_file(args.project, "claim_ledger.json")
+    issues: list[Issue] = []
     try:
         ledger = load_json(ledger_path)
     except FileNotFoundError:
-        print(f"Missing claim ledger: {ledger_path}")
-        return 1
+        issues.append(
+            Issue(
+                "critical",
+                "missing_claim_ledger",
+                str(ledger_path),
+                "Paper-level audit requires .paper-state/claim_ledger.json.",
+                "Run build_paper_state.py and populate claim ids, evidence strength, scope, and sources before final polishing.",
+            )
+        )
+        print_issue_report("Claim Evidence Audit", issues)
+        return 1 if should_fail(issues, args.fail_on) else 0
 
     claims = ledger.get("claims", [])
-    issues: list[Issue] = []
     if not isinstance(claims, list):
         issues.append(Issue("critical", "invalid_claim_ledger", str(ledger_path), "`claims` must be a list."))
-        return print_issue_report("Claim Evidence Audit", issues)
+        print_issue_report("Claim Evidence Audit", issues)
+        return 1 if should_fail(issues, args.fail_on) else 0
+
+    if args.strict and not claims:
+        issues.append(
+            Issue(
+                "critical",
+                "empty_claim_ledger",
+                str(ledger_path),
+                "Strict submission audit cannot verify claim-evidence traceability from an empty ledger.",
+                "Add abstract, contribution, theorem, experiment, figure, and conclusion claims before final polishing.",
+            )
+        )
 
     seen_ids: set[str] = set()
     for claim in claims:
@@ -119,7 +142,8 @@ def main() -> int:
                 )
             )
 
-    return print_issue_report("Claim Evidence Audit", issues)
+    print_issue_report("Claim Evidence Audit", issues)
+    return 1 if should_fail(issues, args.fail_on) else 0
 
 
 if __name__ == "__main__":
