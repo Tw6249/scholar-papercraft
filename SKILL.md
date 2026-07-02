@@ -102,10 +102,11 @@ Read `references/paper-state.md` for file semantics and `schemas/` for machine-r
    python scripts/inventory_materials.py <project>
    ```
 
-3. Separate factual materials from style examples.
-4. Build or update the claim ledger. Read `references/material-audit.md`.
-5. For paper-level or structural work, build the argument graph, author insight cards, and paragraph contracts before rewriting. Read `references/paragraph-contracts.md`.
-6. Choose role passes only as needed:
+3. If PDFs must be read, converted, or distilled, read `references/pdf-ingestion.md`. Use the Codex PDF plugin (`[@pdf](plugin://pdf@openai-primary-runtime)` / `pdf:pdf`) for visual page review, rendering, quick text inspection, and formula/table/layout checks. Never treat extracted PDF text as verified evidence until checked against the original PDF rendering.
+4. Separate factual materials from style examples.
+5. Build or update the claim ledger. Read `references/material-audit.md`.
+6. For paper-level or structural work, build the argument graph, author insight cards, and paragraph contracts before rewriting. Read `references/paragraph-contracts.md`.
+7. Choose role passes only as needed:
    - Evidence Curator
    - Community Taste Analyst
    - Story Architect
@@ -113,15 +114,16 @@ Read `references/paper-state.md` for file semantics and `schemas/` for machine-r
    - Language Editor
    - Review Board
    - Integrity Verifier
-7. Draft or revise from licensed claims and paragraph contracts.
-8. Run deterministic gates before delivery when feasible. For IEEE/control/CS paper-level submission audits, strict gates are mandatory rather than optional. For claim-bearing figures, create or update `.paper-state/figure_cards.json` and run the figure gates when feasible.
-9. Return the revised artifact plus unresolved facts, traceability warnings, and quality-gate status.
+8. Draft or revise from licensed claims and paragraph contracts.
+9. Run deterministic gates before delivery when feasible. For IEEE/control/CS paper-level submission audits, strict gates are mandatory rather than optional. For claim-bearing figures, create or update `.paper-state/figure_cards.json` and run the figure gates when feasible.
+10. Return the revised artifact plus unresolved facts, traceability warnings, and quality-gate status.
 
 Prefer a useful draft with explicit uncertainties over a long list of broad questions. Ask at most 1-3 targeted questions only when the core contribution, target venue, or evidence boundary is ambiguous enough to change the paper.
 
 ## Resource Routing
 
 - Paper State and schemas: `references/paper-state.md`, `schemas/*.schema.json`
+- PDF ingestion with Codex PDF plugin: `references/pdf-ingestion.md`
 - Material inventory and claim ledger: `references/material-audit.md`
 - Paper writing, polishing, reader path, abstracts, introductions, experiments: `references/writing-workflows.md`
 - Language sharpening, de-AI editing, trim-first revision, sentence stress, and bilingual polishing: `references/language-polishing.md`
@@ -230,7 +232,7 @@ Use language modes after factual constraints:
 - `cold-dense`: short, precise, restrained, high-density prose for control, robotics, Automatica, T-RO, RA-L, CDC/ACC, and theorem-heavy ICRA/IROS work.
 - `narrative-persuasive`: stronger reader path and paragraph momentum for broader-audience venues, while still avoiding hype and unsupported breadth.
 
-For requests such as "de-AI", "make this sharper", "less plastic", "more concise", "去 AI 味", "更锋利", or "更短更准", use `workflows/trim-and-sharpen.yaml` and read `references/language-polishing.md`.
+For requests such as "de-AI", "make this sharper", "less plastic", "more concise", "? AI ?", "???", or "????", use `workflows/trim-and-sharpen.yaml` and read `references/language-polishing.md`.
 
 If the user asks to see the distilled profile, return a concise operational profile:
 

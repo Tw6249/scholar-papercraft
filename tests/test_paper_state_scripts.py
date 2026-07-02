@@ -75,6 +75,5 @@ class PaperStateScriptTests(unittest.TestCase):
             matrix = json.loads((state / "traceability_matrix.json").read_text(encoding="utf-8"))
             self.assertEqual(matrix["mappings"][0]["status"], "missing")
 
-
 if __name__ == "__main__":
     unittest.main()
